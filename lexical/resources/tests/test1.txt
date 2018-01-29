@@ -1,0 +1,73 @@
+// This a comment
+/*
+
+This is also a comment
+
+*/
+
+// valid ids
+all of_these ArE12 ids__12_
+
+// valid integers
+0 10 13 12345 1234010
+
+// invalid numbers that will be broken down by scanner
+01 001 
+
+// valid floats
+1.21
+2.32
+3.0
+0.12
+1.00002
+3.45e+23
+4.21e-3450
+1.2e54
+
+// invalid floats that will be broken down
+021.2
+22.01000
+12.34e01
+1.3e
+
+// Operators
+==
+<>
+<=
+>=
+<
+>
+;
+,
+.
+:
+::
+()
+[]
+{}
+/
+
+// keywords
+if
+then
+else
+for
+class
+and
+int
+not
+float
+or
+get
+put
+return
+program
+
+// Error states
+1.1e_
+$$
+#
+##
+&
+!
+?

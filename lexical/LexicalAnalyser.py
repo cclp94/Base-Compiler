@@ -6,6 +6,9 @@ class Token:
         self.value = value
         self.index = index
 
+    def __str__(self):
+        return repr("["+self.tokenType + ":" + self.value+"]")
+
 class LexicalAnalyser:
     def __init__(self, srcCode):
         self.__src = srcCode
@@ -17,22 +20,28 @@ class LexicalAnalyser:
         return self
 
     def __next__(self):
-        if len(self.__src)-1 == self.__pointer:
+        token = self.nextToken()
+        if not token or len(self.__src)-1 == self.__pointer:
             raise StopIteration
-        return self.nextToken()
+        return token
 
     def nextToken(self):
         state = 1
         token = None
+        
         while not token and self.__pointer < len(self.__src):
-            if state == 1:
-                initialIndex = self.__pointer
-            lookup = self.__src[self.__pointer]
-            state = self.__lookupTable(state, lookup)
-            if self.__isFinalState(state):
-                if self.__requiresBacktrack(state):
-                    self.__pointer -= 1
-                token = self.__createToken(state, initialIndex)
+            try:
+                if state == 1:
+                    initialIndex = self.__pointer
+                lookup = self.__src[self.__pointer]
+                state = self.__lookupTable(state, lookup)
+                if self.__isFinalState(state):
+                    if self.__requiresBacktrack(state):
+                        self.__pointer -= 1
+                    token = self.__createToken(state, initialIndex)
+            except TypeError:
+                print(repr("Type Error: Invalid character: "+self.__src[self.__pointer] + " at position "+ str(self.__pointer)))
+                state = 1
             self.__pointer += 1
         return token
 
@@ -63,13 +72,13 @@ class LexicalTable:
         line = f.readline()
         order = []
         p = re.compile("\\\\(.*)\\\\")
-        for cell in line.split(','):
+        for cell in line.split('|'):
             c = cell.strip()
             key = p.sub('', c)
             self.__table[key] = [p.search(c).group(1)]
             order.append(key)
         for line in f.readlines():
-            cells = line.split(',')
+            cells = line.split('|')
             for i in range(0, len(order)):
                 self.__table[order[i]].append(cells[i].strip())
         f.close()
@@ -85,7 +94,7 @@ class LexicalTable:
     def lookup(self, state, lookup):
         for key in self.__table.keys():
             p = re.compile(self.__table[key][0])
-            if p.search(lookup) and p.search(lookup).group():
+            if p.search(lookup) and len(p.search(lookup).group()):
                 #print(lookup + ", "+ str(state) + "->"+ self.__table[key][state])
                 return int(self.__table[key][state])
     
@@ -102,10 +111,3 @@ class LexicalTable:
             return True
         else:
             return False
-
-
-
-
-l = LexicalAnalyser("int main(){ var hello = 0.01; if(hello == 123) return true; else return false; }\n")
-for token in l:
-    print("["+token.value + ":" + token.tokenType+"]")
