@@ -1,8 +1,11 @@
 import re
+import datetime
 from Token import Token 
 from LexicalTable import LexicalTable
 
 class LexicalAnalyser:
+    ERROR_FILE = './logs/error.log'
+
     def __init__(self, srcCode):
         self.__src = srcCode
         self.__pointer = 0
@@ -33,6 +36,8 @@ class LexicalAnalyser:
                         self.__pointer -= 1
                     token = self.__createToken(state, initialIndex)
             except TypeError:
+                err = repr("Type Error: Invalid character: "+self.__src[self.__pointer] + " at position "+ str(self.__pointer))
+                self.__fileError(err)
                 print(repr("Type Error: Invalid character: "+self.__src[self.__pointer] + " at position "+ str(self.__pointer)))
                 state = 1
             self.__pointer += 1
@@ -50,3 +55,7 @@ class LexicalAnalyser:
         return Token(tokenType, value, index)
     def __requiresBacktrack(self, state):
         return self.__table.requiresBacktrack(state)
+
+    def __fileError(self, errorMsg):
+        f = open(self.ERROR_FILE, 'a')
+        f.write(str(datetime.datetime.utcnow())+": "+ errorMsg+"\n")

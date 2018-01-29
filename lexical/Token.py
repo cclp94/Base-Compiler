@@ -6,3 +6,6 @@ class Token:
 
     def __str__(self):
         return repr("["+self.tokenType + ":" + self.value+"]")
+
+    def serialize(self):
+        return "["+self.tokenType + ":" + repr(self.value)+":"+str(self.index)+"]\n"
