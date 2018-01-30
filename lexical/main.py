@@ -1,28 +1,39 @@
 import sys
+import os
 from LexicalAnalyser import *
 
 OUTPUT_FILE = "./logs/output.txt"
 
 def showUsage(msg):
-    print("ERROR: "+msg+":\n\
-    Usage: py Main.py -f <file path>\
-     -o\n-f <file path>: source code to analyse\n\
-     -o: generate output on log [optional]")
+    print("ERROR: "+msg+":\nUsage: py Main.py -f <file path> -o\n-f <file path>: source code to analyse\n-o: generate output on log [optional]")
 
 try:
+    #get argument count
     arg_count = len(sys.argv)
+    # if num of arguments is correct
     if(arg_count > 1):
         flag = sys.argv[1]
+        # check if -f flag is present
         if flag == '-f':
-            print(sys.argv[2])
+            # get file path
+            filepath =sys.argv[2]
             out = None
-            src = open(sys.argv[2]).read()
+            # open file
+            f = open(filepath, 'r')
+            src = f.read()
+            f.close()
+            # check if -o flag was present, if so create logs folder and create output file
             if arg_count == 4:
+                if not os.path.exists("./logs/"):
+                    os.makedirs("./logs/")
                 out = open(OUTPUT_FILE, 'w')
-            l = LexicalAnalyser(src)
+            #initialize Lexical Analyser
+            l = LexicalAnalyser(src, filepath)
+            # iterate through Token Stream
             for token in l:
                 print(token)
                 if out:
+                    # generate output file
                     out.write(token.serialize())
             if out:
                 out.close()
@@ -30,7 +41,5 @@ try:
             raise Exception('Wrong argumets')
     else:
         raise Exception('Wrong argumets')
-except IOError:
-    showUsage("File not found")
 except Exception as error:
     showUsage(repr(error))

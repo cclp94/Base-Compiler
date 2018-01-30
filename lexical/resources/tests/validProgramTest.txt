@@ -1,0 +1,27 @@
+// This a example program
+program {
+    MyClass::Object {
+        int attr1;
+        float attr2;
+        list[] attr3
+
+        void contructor_(int val1, int val2){
+            if( val1 > 0){
+                attr1 = val1;
+                attr2 = val2 / val1;
+                attr3 = new List();
+            }else if(val1 == 0 or val2 == 0 and val1 <> val2){
+                attr2 = attr1 * attr2;
+            }
+        }
+
+        void compare2Attributes_(float val1, float val2){
+            if(val1 >= val2){
+                return true;
+            }else if(val1 <= val2){
+                return false;
+            }else if(val2 <> val1)
+                retur false;
+        }
+    }
+}

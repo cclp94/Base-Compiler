@@ -53,3 +53,10 @@ class LexicalTable:
             return True
         else:
             return False
+    
+    def isErrorState(self, state):
+        error = self.__table['error'][state]
+        if error == 'TRUE':
+            return True
+        else:
+            return False
