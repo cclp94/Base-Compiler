@@ -8,4 +8,5 @@ class Token:
         return repr("["+self.tokenType + ":" + self.value+"]")
 
     def serialize(self):
-        return "["+self.tokenType + ":" + repr(self.value)+":"+str(self.index)+"]\n"
+        #return "["+self.tokenType + ":" + repr(self.value)+":"+str(self.index)+"]\n"
+        return self.tokenType

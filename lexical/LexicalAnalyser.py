@@ -66,7 +66,7 @@ class LexicalAnalyser:
         tokenType = self.__table.checkFinal(state)
         value = self.__src[index:self.__pointer+1]
         if self.__table.checkKeyword(value):
-            return Token('KEYWORD', value, index)
+            return Token(value.upper(), value, index)
         return Token(tokenType, value, index)
     def __requiresBacktrack(self, state):
         return self.__table.requiresBacktrack(state)

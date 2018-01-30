@@ -34,8 +34,9 @@ try:
                 print(token)
                 if out:
                     # generate output file
-                    out.write(token.serialize())
+                    out.write(token.serialize() + ' ')
             if out:
+                out.write('EOU')
                 out.close()
         else:
             raise Exception('Wrong argumets')
