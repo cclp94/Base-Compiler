@@ -1,8 +1,8 @@
 import re
 
 class LexicalTable:
-    TABLE_RESOURCE_LOC = './resources/lexicalTable.csv'
-    KEYWORDS_RESOURCE_LOC = './resources/keywords.txt'
+    TABLE_RESOURCE_LOC = 'lexical/resources/lexicalTable.csv'
+    KEYWORDS_RESOURCE_LOC = 'lexical/resources/keywords.txt'
 
     def __init__(self):
         self.__generateTable()

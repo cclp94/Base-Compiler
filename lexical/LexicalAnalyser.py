@@ -1,11 +1,11 @@
 import re
 import os
 import datetime
-from Token import Token 
-from LexicalTable import LexicalTable
+from lexical.Token import Token 
+from lexical.LexicalTable import LexicalTable
 
 class LexicalAnalyser:
-    LOGS_DIR= './logs/'
+    LOGS_DIR= 'lexical/logs/'
     ERROR_FILE = 'error.log'
 
     def __init__(self, srcCode, filepath):
@@ -24,6 +24,11 @@ class LexicalAnalyser:
         if not token or len(self.__src)-1 == self.__pointer:
             raise StopIteration
         return token
+    
+    def hasNextToken(self):
+        if len(self.__src)-1 == self.__pointer:
+            return False
+        return True
 
 
     def nextToken(self):
@@ -66,7 +71,7 @@ class LexicalAnalyser:
         tokenType = self.__table.checkFinal(state)
         value = self.__src[index:self.__pointer+1]
         if self.__table.checkKeyword(value):
-            return Token(value.upper(), value, index)
+            return Token(value, value, index)
         return Token(tokenType, value, index)
     def __requiresBacktrack(self, state):
         return self.__table.requiresBacktrack(state)
