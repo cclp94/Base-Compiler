@@ -1,0 +1,28 @@
+classHeaders -> EPSILON
+
+classSources -> EPSILON
+
+program 
+program { 
+program { id 
+program { id id 
+arrayDimenssion -> EPSILON
+program { id id 
+program { id id ; 
+varAssignOrDeclTail -> 'id' arrayDimenssion ';'
+program { id id ; 
+varAssignOrDecl -> 'id' varAssignOrDeclTail
+program { id id ; 
+statement -> varAssignOrDecl
+program { id id ; 
+statements -> EPSILON
+program { id id ; 
+statements -> statement statements
+program { id id ; 
+program { id id ; } 
+funcBody -> '{' statements '}'
+program { id id ; } 
+program { id id ; } ; 
+prog -> classHeaders classSources 'program' funcBody ';'
+program { id id ; } ; 
+program { id id ; } ; 

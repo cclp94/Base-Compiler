@@ -5,6 +5,8 @@ lookahead = None
 first = {}
 follow = {}
 syntacticTree = None
+outFile = None
+errorFile = None
 
 def nextToken():
     global lexicalStream
@@ -18,610 +20,853 @@ def getMapOfFirsts():
         fList = parts[3][1:-2].split('|')
         if parts[0] == 'FIRST':
             first[name] = fList
+            follow[name] = []
         else:
             follow[name] = fList
-    #print(first)
-    #print(follow)
+    f.close()
 
 
-def parse(l):
-    global lexicalStream
-    global  lookahead
+def parse(l, outputFileStream, errorFileStream):
+    global lexicalStream, lookahead, outputDerivation, outFile, errorFile
+    outFile = outputFileStream
+    errorFile = errorFileStream
     lexicalStream = l
     getMapOfFirsts()
     lookahead = nextToken()
+    outputDerivation = 'prog '
     if prog():
-        #$print(syntacticTree)
+        writeOutput()
         return True
     else:
         return False
 
-def match(currentNodeLevel, token):
+def logError(msg):
+    errorFile.write(msg+'\n')
+    print(msg)
+
+def logDerivationRule(line):
+    outFile.write(line+'\n')
+
+def skipErrors(firstList, followList, token=''):
+    global  lookahead
+    if lookahead.tokenType in firstList or ('EPSILON' in firstList and lookahead.tokenType in followList):
+        return True
+    else:
+        error = "Invalid syntax at token: >>'"+str(lookahead.value)+"'<< at index "+str(lookahead.index)
+        if token:
+            error+= ', expected '+ token
+        logError(error)
+        while lookahead.tokenType not in firstList and lookahead.tokenType not in followList:
+            lookahead = nextToken()
+            if 'EPSILON' in firstList and lookahead.value in followList:
+                return True
+        return True
+
+def match(currentNodeLevel, token, trackBack=False):
     global  lookahead
     if  lookahead.tokenType == token:
         newTreeNode(currentNodeLevel, token, True)
         lookahead = nextToken()
-        #print(lookahead)
+        writeOutput()
         return True
     else:
+        skipErrors(first[currentNodeLevel.value], follow[currentNodeLevel.value]+[token], token)
+        if token == lookahead.tokenType:
+            return match(currentNodeLevel, token)
         return False
+
+def writeOutput():
+    derivationOutput(syntacticTree)
+    outFile.write('\n')
+    #print('\n')
 
 def newTreeNode(current, value, leaf):
     global syntacticTree
-    newNode = SyntacticalNode(syntacticTree, value, leaf)
+    newNode = SyntacticalNode(current, value, leaf)
     current.addChild(newNode)
     #syntacticTree = newNode
     return newNode
+
+def derivationOutput(root):
+    if not root.children:
+        if root.value != 'EPSILON':
+            #print(root.value, end=" ", flush=True)
+            outFile.write(root.value+" ")
+    else:
+        for child in root.children:
+            derivationOutput(child)
 
 def prog():
     global syntacticTree
     syntacticTree = SyntacticalNode(None, 'prog', False)
     currentNode = syntacticTree
-    print(first['prog'])
-    if   lookahead.tokenType in first['prog']:
+    if lookahead.tokenType in first['prog']:
         if classHeaders(currentNode) and classSources(currentNode) and match(currentNode, 'program') and funcBody(currentNode) and match(currentNode, ';'):
-            print("prog -> classHeaders classSources 'program' funcBody ';'")
+            logDerivationRule("prog -> classHeaders classSources 'program' funcBody ';'")
+            writeOutput()
             return True
+    
     return False
 
 def classHeaders(currentNodeLevel):
+    if not skipErrors(first['classHeaders'], follow['classHeaders']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'classHeader', False)
     if   lookahead.tokenType in first['classHeaders']:
         if classDecl(currentNodeLevel) and classHeaders(currentNodeLevel):
-            print("classHeaders -> classDecl classHeaders")
+            logDerivationRule("classHeaders -> classDecl classHeaders")
+            writeOutput()
             return True
-    elif   lookahead.tokenType in follow['classHeaders']:
+    elif  lookahead.tokenType in follow['classHeaders']:
         newTreeNode(currentNodeLevel, 'EPSILON', True)
-        print("classHeaders -> EPSILON")
+        logDerivationRule("classHeaders -> EPSILON")
+        writeOutput()
         return True
+    
     return False
 
 def classSources(currentNodeLevel):
+    if not skipErrors(first['classSources'], follow['classSources']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'classSources', False)
     if   lookahead.tokenType  in first['classSources']:
         if funcDef(currentNodeLevel) and classSources(currentNodeLevel):
-            print("classSources -> funcDef classSources")
+            logDerivationRule("classSources -> funcDef classSources")
+            writeOutput()
             return True
     elif   lookahead.tokenType  in follow['classSources']:
         newTreeNode(currentNodeLevel, 'EPSILON', True)
-        print("classSources -> EPSILON")
+        logDerivationRule("classSources -> EPSILON")
+        writeOutput()
         return True
+    
     return False
 
 def classDecl(currentNodeLevel):
+    if not skipErrors(first['classDecl'], follow['classDecl']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'classDecl', False)
     if   lookahead.tokenType  in first['classDecl']:
         if match(currentNodeLevel, 'class') and match(currentNodeLevel, 'id') and inheritance(currentNodeLevel) and match(currentNodeLevel, '{') and classDeclEntities(currentNodeLevel) and match(currentNodeLevel, '}') and match(currentNodeLevel, ';'):
-            print("classDecl -> 'class' 'id' inheritance '{' classDeclEntities '}' ';'")
+            logDerivationRule("classDecl -> 'class' 'id' inheritance '{' classDeclEntities '}' ';'")
+            writeOutput()
             return True
+    
     return False
 
 def classDeclEntities(currentNodeLevel):
+    if not skipErrors(first['classDeclEntities'], follow['classDeclEntities']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'classDeclEntities', False)
     if   lookahead.tokenType  in first['classDeclEntities']:
         if classDeclEntity(currentNodeLevel) and classDeclEntities(currentNodeLevel):
-            print("classDeclEntities -> classDeclEntity classDeclEntities")
+            logDerivationRule("classDeclEntities -> classDeclEntity classDeclEntities")
+            writeOutput()
             return True
     elif   lookahead.tokenType  in follow['classDeclEntities']:
         newTreeNode(currentNodeLevel, 'EPSILON', True)
-        print("classDeclEntities -> EPSILON")
+        logDerivationRule("classDeclEntities -> EPSILON")
+        writeOutput()
         return True
+    
     return False
 
 def classDeclEntity(currentNodeLevel):
+    if not skipErrors(first['classDeclEntity'], follow['classDeclEntity']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'classDeclEntity', False)
     if   lookahead.tokenType  in first['classDeclEntity']:
-        if vType(currentNodeLevel) and match(currentNodeLevel, 'id') and classDeclEntityTail(currentNodeLevel):
-            print("classDeclEntity -> type 'id' classDeclEntityTail")
+        if vType(currentNodeLevel) and match(currentNodeLevel, 'id') and classDeclEntityTail(currentNodeLevel) and match(currentNodeLevel, ';'):
+            logDerivationRule("classDeclEntity -> type 'id' classDeclEntityTail ';'")
+            writeOutput()
             return True
+    
     return False
 
 def classDeclEntityTail(currentNodeLevel):
+    if not skipErrors(first['classDeclEntityTail'], follow['classDeclEntityTail']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'classDeclEntityTail', False)
     if   lookahead.tokenType  in first['classDeclEntityTail']:
-        if match(currentNodeLevel, '(') and fParams(currentNodeLevel) and match(currentNodeLevel, ')') and match(currentNodeLevel, ';'):
-            print("classDeclEntityTail -> '(' fParams ')' ';'")
+        if match(currentNodeLevel, '(') and fParams(currentNodeLevel) and match(currentNodeLevel, ')'):
+            logDerivationRule("classDeclEntityTail -> '(' fParams ')'")
+            writeOutput()
             return True
-        elif arrayDimenssion(currentNodeLevel) and match(currentNodeLevel, ';'):
-            print("classDeclEntityTail -> arrayDimenssion ';'")
+        elif arrayDimenssion(currentNodeLevel):
+            logDerivationRule("classDeclEntityTail -> arrayDimenssion")
+            writeOutput()
             return True
+    elif   lookahead.tokenType  in follow['classDeclEntityTail']:
+        newTreeNode(currentNodeLevel, 'EPSILON', True)
+        logDerivationRule("classDeclEntityTail -> EPSILON")
+        writeOutput()
+        return True
+    
     return False
 
 def inheritance(currentNodeLevel):
+    if not skipErrors(first['inheritance'], follow['inheritance']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'inheritance', False)
     if   lookahead.tokenType  in first['inheritance']:
         if match(currentNodeLevel, ':') and match(currentNodeLevel, 'id') and multipleInheritance(currentNodeLevel):
-            print("inheritance -> ':' 'id' multipleInheritance ")
+            logDerivationRule("inheritance -> ':' 'id' multipleInheritance ")
+            writeOutput()
             return True
     elif   lookahead.tokenType  in follow['inheritance']:
         newTreeNode(currentNodeLevel, 'EPSILON', True)
-        print("inheritance -> EPSILON")
+        logDerivationRule("inheritance -> EPSILON")
+        writeOutput()
         return True
+    
     return False
 
 def multipleInheritance(currentNodeLevel):
+    if not skipErrors(first['multipleInheritance'], follow['multipleInheritance']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'multipleInheritance', False)
     if   lookahead.tokenType  in first['multipleInheritance']:
         if match(currentNodeLevel, ',') and match(currentNodeLevel, 'id') and multipleInheritance(currentNodeLevel):
-            print("multipleInheritance -> ',' 'id' multipleInheritance ")
+            logDerivationRule("multipleInheritance -> ',' 'id' multipleInheritance ")
+            writeOutput()
             return True
     elif   lookahead.tokenType  in follow['multipleInheritance']:
         newTreeNode(currentNodeLevel, 'EPSILON', True)
-        print("multipleInheritance -> EPSILON")
+        logDerivationRule("multipleInheritance -> EPSILON")
+        writeOutput()
         return True
+    
     return False
 
 def funcHead(currentNodeLevel):
+    if not skipErrors(first['funcHead'], follow['funcHead']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'funcHead', False)
     if   lookahead.tokenType  in first['funcHead']:
         if vType(currentNodeLevel) and match(currentNodeLevel, 'id') and namespace(currentNodeLevel) and match(currentNodeLevel, '(') and fParams(currentNodeLevel) and match(currentNodeLevel, ')'):
-            print("funcHead -> type 'id' namespace  '(' fParams ')'")
+            logDerivationRule("funcHead -> type 'id' namespace  '(' fParams ')'")
+            writeOutput()
             return True
+    
     return False
 
 def namespace(currentNodeLevel):
+    if not skipErrors(first['namespace'], follow['namespace']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'namespace', False)
     if   lookahead.tokenType  in first['namespace']:
         if match(currentNodeLevel, 'sr') and match(currentNodeLevel, 'id'):
-            print("namespace -> 'sr' 'id'")
+            logDerivationRule("namespace -> 'sr' 'id'")
+            writeOutput()
             return True
     elif   lookahead.tokenType  in follow['namespace']:
         newTreeNode(currentNodeLevel, 'EPSILON', True)
-        print("namespace -> EPSILON")
+        logDerivationRule("namespace -> EPSILON")
+        writeOutput()
         return True
+    
     return False
 
 def funcDef(currentNodeLevel):
+    if not skipErrors(first['funcDef'], follow['funcDef']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'funcDef', False)
     if   lookahead.tokenType  in first['funcDef']:
         if funcHead(currentNodeLevel) and funcBody(currentNodeLevel) and match(currentNodeLevel, ';'):
-            print("funcDef -> funcHead funcBody ';'")
+            logDerivationRule("funcDef -> funcHead funcBody ';'")
+            writeOutput()
             return True
+    
     return False
 
 def funcBody(currentNodeLevel):
+    if not skipErrors(first['funcBody'], follow['funcBody']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'funcBody', False)
     if   lookahead.tokenType  in first['funcBody']:
         if match(currentNodeLevel, '{') and statements(currentNodeLevel) and match(currentNodeLevel, '}'):
-            print("funcBody -> '{' statements '}'")
+            logDerivationRule("funcBody -> '{' statements '}'")
+            writeOutput()
             return True
+    
     return False
 
 def statements(currentNodeLevel):
+    if not skipErrors(first['statements'], follow['statements']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'statements', False)
     if   lookahead.tokenType  in first['statements']:
         if statement(currentNodeLevel) and statements(currentNodeLevel):
-            print("statements -> statement statements")
+            logDerivationRule("statements -> statement statements")
+            writeOutput()
             return True
     elif   lookahead.tokenType  in follow['statements']:
         newTreeNode(currentNodeLevel, 'EPSILON', True)
-        print("statements -> EPSILON")
+        logDerivationRule("statements -> EPSILON")
+        writeOutput()
         return True
+    
     return False
 
 def arrayDimenssion(currentNodeLevel):
+    if not skipErrors(first['arrayDimenssion'], follow['arrayDimenssion']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'arrayDimenssion', False)
     if   lookahead.tokenType  in first['arrayDimenssion']:
         if arraySize(currentNodeLevel) and arrayDimenssion(currentNodeLevel):
-            print("arrayDimenssion -> arraySize arrayDimenssion")
+            logDerivationRule("arrayDimenssion -> arraySize arrayDimenssion")
+            writeOutput()
             return True
-    elif   lookahead.tokenType  in follow['arrayDimenssion']:
+    elif  lookahead.tokenType  in follow['arrayDimenssion']:
         newTreeNode(currentNodeLevel, 'EPSILON', True)
-        print("arrayDimenssion -> EPSILON")
+        logDerivationRule("arrayDimenssion -> EPSILON")
+        writeOutput()
         return True
+    
     return False
 
 def statement(currentNodeLevel):
+    if not skipErrors(first['statement'], follow['statement']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'statement', False)
     if   lookahead.tokenType  in first['statement']:
         if match(currentNodeLevel, 'int') and match(currentNodeLevel, 'id') and arrayDimenssion(currentNodeLevel) and match(currentNodeLevel, ';'):
-            print("statement -> 'int' 'id' arrayDimenssion ';'")
+            logDerivationRule("statement -> 'int' 'id' arrayDimenssion ';'")
+            writeOutput()
             return True
         elif match(currentNodeLevel, 'float') and match(currentNodeLevel, 'id') and arrayDimenssion(currentNodeLevel) and match(currentNodeLevel, ';'):
-            print("statement -> 'float' 'id' arrayDimenssion ';'")
-            return True
-        elif varAssignOrDecl(currentNodeLevel):
-            print("statement -> varAssignOrDecl")
+            logDerivationRule("statement -> 'float' 'id' arrayDimenssion ';'")
+            writeOutput()
             return True
         elif match(currentNodeLevel, 'if') and match(currentNodeLevel, '(') and expr(currentNodeLevel) and match(currentNodeLevel, ')') and match(currentNodeLevel, 'then') and statBlock(currentNodeLevel) and match(currentNodeLevel, 'else') and statBlock(currentNodeLevel) and match(currentNodeLevel, ';'):
-            print("statement -> 'if' '(' expr ')' 'then' statBlock 'else' statBlock ';'")
+            logDerivationRule("statement -> 'if' '(' expr ')' 'then' statBlock 'else' statBlock ';'")
+            writeOutput()
             return True
         elif match(currentNodeLevel, 'for') and match(currentNodeLevel, '(') and vType(currentNodeLevel) and match(currentNodeLevel, 'id') and assignOp(currentNodeLevel) and expr(currentNodeLevel) and match(currentNodeLevel, ';') and relExpr(currentNodeLevel) and match(currentNodeLevel, ';') and assignStat(currentNodeLevel) and match(currentNodeLevel, ')') and statBlock(currentNodeLevel) and match(currentNodeLevel, ';'):
-            print("statement -> 'for' '(' type 'id' assignOp expr ';' relExpr ';' assignStat ')' statBlock ';'")
+            logDerivationRule("statement -> 'for' '(' type 'id' assignOp expr ';' relExpr ';' assignStat ')' statBlock ';'")
+            writeOutput()
             return True
         elif match(currentNodeLevel, 'get') and match(currentNodeLevel, '(') and variable(currentNodeLevel) and match(currentNodeLevel, ')') and match(currentNodeLevel, ';'):
-            print("statement -> 'get' '(' variable ')' ';'")
+            logDerivationRule("statement -> 'get' '(' variable ')' ';'")
+            writeOutput()
             return True
         elif match(currentNodeLevel, 'put') and match(currentNodeLevel, '(') and expr(currentNodeLevel) and match(currentNodeLevel, ')') and match(currentNodeLevel, ';'):
-            print("statement -> 'put' '(' expr ')' ';'")
+            logDerivationRule("statement -> 'put' '(' expr ')' ';'")
+            writeOutput()
             return True
         elif match(currentNodeLevel, 'return') and match(currentNodeLevel, '(') and expr(currentNodeLevel) and match(currentNodeLevel, ')') and match(currentNodeLevel, ';'):
-            print("statement -> 'return' '(' expr ')' ';'")
+            logDerivationRule("statement -> 'return' '(' expr ')' ';'")
+            writeOutput()
             return True
+        elif varAssignOrDecl(currentNodeLevel):
+            logDerivationRule("statement -> varAssignOrDecl")
+            writeOutput()
+            return True
+    
     return False
 
 def varAssignOrDecl(currentNodeLevel):
+    if not skipErrors(first['varAssignOrDecl'], follow['varAssignOrDecl']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'varAssignOrDecl', False)
     if   lookahead.tokenType  in first['varAssignOrDecl']:
         if match(currentNodeLevel, 'id') and varAssignOrDeclTail(currentNodeLevel):
-            print("varAssignOrDecl -> 'id' varAssignOrDeclTail")
+            logDerivationRule("varAssignOrDecl -> 'id' varAssignOrDeclTail")
+            writeOutput()
             return True
+    parent = currentNodeLevel.parent
+    parent.children.remove(currentNodeLevel)
+    
     return False
 
 def varAssignOrDeclTail(currentNodeLevel):
+    if not skipErrors(first['varAssignOrDeclTail'], follow['varAssignOrDeclTail']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'varAssignOrDeclTail', False)
     if   lookahead.tokenType  in first['varAssignOrDeclTail']:
         if match(currentNodeLevel, 'id') and arrayDimenssion(currentNodeLevel) and match(currentNodeLevel, ';'):
-            print("varAssignOrDeclTail -> 'id' arrayDimenssion ';'")
+            logDerivationRule("varAssignOrDeclTail -> 'id' arrayDimenssion ';'")
+            writeOutput()
             return True
         elif idnests(currentNodeLevel) and indices(currentNodeLevel) and assignOp(currentNodeLevel) and expr(currentNodeLevel) and match(currentNodeLevel, ';'):
-            print("varAssignOrDeclTail -> idnests indices assignOp expr ';'")
+            logDerivationRule("varAssignOrDeclTail -> idnests indices assignOp expr ';'")
+            writeOutput()
             return True
+    
     return False
 
 def assignStat(currentNodeLevel):
+    if not skipErrors(first['assignStat'], follow['assignStat']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'assignStat', False)
     if   lookahead.tokenType  in first['assignStat']:
         if variable(currentNodeLevel) and assignOp(currentNodeLevel) and expr(currentNodeLevel):
-            print("assignStat -> variable assignOp expr")
+            logDerivationRule("assignStat -> variable assignOp expr")
+            writeOutput()
             return True
+    
     return False
 
 def statBlock(currentNodeLevel):
+    if not skipErrors(first['statBlock'], follow['statBlock']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'statBlock', False)
     if   lookahead.tokenType  in first['statBlock']:
         if match(currentNodeLevel, '{') and statements(currentNodeLevel) and match(currentNodeLevel, '}'):
-            print("statBlock -> '{' statements '}'")
+            logDerivationRule("statBlock -> '{' statements '}'")
+            writeOutput()
             return True
         elif statement(currentNodeLevel):
-            print("statBlock -> statement")
+            logDerivationRule("statBlock -> statement")
+            writeOutput()
             return True
     elif   lookahead.tokenType  in follow['statBlock']:
         newTreeNode(currentNodeLevel, 'EPSILON', True)
-        print("statBlock -> EPSILON")
+        logDerivationRule("statBlock -> EPSILON")
+        writeOutput()
         return True
+    
     return False
 
 def expr(currentNodeLevel):
+    if not skipErrors(first['expr'], follow['expr']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'expr', False)
     if   lookahead.tokenType  in first['expr']:
         if arithExpr(currentNodeLevel) and exprTail(currentNodeLevel):
-            print("expr -> arithExpr exprTail")
+            logDerivationRule("expr -> arithExpr exprTail")
+            writeOutput()
             return True
+    
     return False
 
 def exprTail(currentNodeLevel):
+    if not skipErrors(first['exprTail'], follow['exprTail']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'exprTail', False)
     if   lookahead.tokenType  in first['exprTail']:
         if relOp(currentNodeLevel) and arithExpr(currentNodeLevel):
-            print("exprTail -> relOp arithExpr")
+            logDerivationRule("exprTail -> relOp arithExpr")
+            writeOutput()
             return True
     elif   lookahead.tokenType  in follow['exprTail']:
         newTreeNode(currentNodeLevel, 'EPSILON', True)
-        print("exprTail -> EPSILON")
+        logDerivationRule("exprTail -> EPSILON")
+        writeOutput()
         return True
+    
     return False
 
 def relExpr(currentNodeLevel):
+    if not skipErrors(first['relExpr'], follow['relExpr']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'relExpr', False)
     if   lookahead.tokenType  in first['relExpr']:
         if arithExpr(currentNodeLevel) and relOp(currentNodeLevel) and arithExpr(currentNodeLevel):
-            print("relExpr -> arithExpr relOp arithExpr")
+            logDerivationRule("relExpr -> arithExpr relOp arithExpr")
+            writeOutput()
             return True
+    
     return False
 
 def arithExpr(currentNodeLevel):
+    if not skipErrors(first['arithExpr'], follow['arithExpr']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'arithExpr', False)
     if   lookahead.tokenType  in first['arithExpr']:
         if term(currentNodeLevel) and arithExprTail(currentNodeLevel):
-            print("arithExpr -> term relOp")
+            logDerivationRule("arithExpr -> term relOp")
+            writeOutput()
             return True
+    
     return False
 
 def arithExprTail(currentNodeLevel):
+    if not skipErrors(first['arithExprTail'], follow['arithExprTail']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'arithExprTail', False)
     if   lookahead.tokenType  in first['arithExprTail']:
         if addOp(currentNodeLevel) and term(currentNodeLevel) and arithExprTail(currentNodeLevel):
-            print("arithExprTail -> addOp term arithExprTail ")
+            logDerivationRule("arithExprTail -> addOp term arithExprTail ")
+            writeOutput()
             return True
     elif   lookahead.tokenType  in follow['arithExprTail']:
         newTreeNode(currentNodeLevel, 'EPSILON', True)
-        print("arithExprTail -> EPSILON")
+        logDerivationRule("arithExprTail -> EPSILON")
+        writeOutput()
         return True
+    
     return False
 
 def sign(currentNodeLevel):
+    if not skipErrors(first['sign'], follow['sign']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'sign', False)
     if   lookahead.tokenType  in first['sign']:
         if match(currentNodeLevel, '+'):
-            print("sign -> '+'")
+            logDerivationRule("sign -> '+'")
+            writeOutput()
             return True
         if match(currentNodeLevel, '-'):
-            print("sign -> '-'")
+            logDerivationRule("sign -> '-'")
+            writeOutput()
             return True
+    
     return False
 
 def term(currentNodeLevel):
+    if not skipErrors(first['term'], follow['term']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'term', False)
     if   lookahead.tokenType  in first['term']:
         if factor(currentNodeLevel) and termTail(currentNodeLevel):
-            print("term -> factor termTail")
+            logDerivationRule("term -> factor termTail")
+            writeOutput()
             return True
+    
     return False
 
 def termTail(currentNodeLevel):
+    if not skipErrors(first['termTail'], follow['termTail']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'termTail', False)
     if   lookahead.tokenType  in first['termTail']:
         if multOp(currentNodeLevel) and factor(currentNodeLevel) and termTail(currentNodeLevel):
-            print("termTail -> multOp factor termTail")
+            logDerivationRule("termTail -> multOp factor termTail")
+            writeOutput()
             return True
     elif   lookahead.tokenType  in follow['termTail']:
         newTreeNode(currentNodeLevel, 'EPSILON', True)
-        print("termTail -> EPSILON")
+        logDerivationRule("termTail -> EPSILON")
+        writeOutput()
         return True
+    
     return False
 
 def factor(currentNodeLevel):
+    if not skipErrors(first['factor'], follow['factor']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'factor', False)
     if   lookahead.tokenType  in first['factor']:
         if variableOrFuncCall(currentNodeLevel):
-            print("factor -> variableOrFuncCall")
+            logDerivationRule("factor -> variableOrFuncCall")
+            writeOutput()
             return True
         elif match(currentNodeLevel, 'intNum'):
-            print("factor -> intNum")
+            logDerivationRule("factor -> intNum")
+            writeOutput()
             return True
         elif match(currentNodeLevel, 'floatNum'):
-            print("factor -> floatNum")
+            logDerivationRule("factor -> floatNum")
+            writeOutput()
             return True
         elif match(currentNodeLevel, '(') and arithExpr(currentNodeLevel) and match(currentNodeLevel, ')'):
-            print("factor -> '(' arithExpr ')'")
+            logDerivationRule("factor -> '(' arithExpr ')'")
+            writeOutput()
             return True
         elif match(currentNodeLevel, 'not') and factor(currentNodeLevel):
-            print("factor -> 'not' factor")
+            logDerivationRule("factor -> 'not' factor")
+            writeOutput()
             return True
         elif sign(currentNodeLevel) and factor(currentNodeLevel):
-            print("factor -> sign factor")
+            logDerivationRule("factor -> sign factor")
+            writeOutput()
             return True
+    
     return False
 
 def variableOrFuncCall(currentNodeLevel):
+    #if not skipErrors(first['variableOrFuncCall'], follow['variableOrFuncCall']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'variableOrFuncCall', False)
     if   lookahead.tokenType  in first['variableOrFuncCall']:
         if match(currentNodeLevel, 'id') and idnests(currentNodeLevel) and variableOrFuncCallTail(currentNodeLevel):
-            print("variableOrFuncCall -> 'id' idnests variableOrFuncCallTail")
+            logDerivationRule("variableOrFuncCall -> 'id' idnests variableOrFuncCallTail")
+            writeOutput()
             return True
+    parent = currentNodeLevel.parent
+    parent.children.remove(currentNodeLevel)
+    #
     return False
 
 def variableOrFuncCallTail(currentNodeLevel):
+    #if not skipErrors(first['variableOrFuncCallTail'], follow['variableOrFuncCallTail']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'variableOrFuncCallTail', False)
-    print(first['variableOrFuncCallTail'])
     if   lookahead.tokenType  in first['variableOrFuncCallTail']:
-        if indices(currentNodeLevel):
-            print("variableOrFuncCallTail -> indices")
+        if match(currentNodeLevel, '(') and aParams(currentNodeLevel) and match(currentNodeLevel, ')'):
+            logDerivationRule("variableOrFuncCallTail -> '(' aParams ')'")
+            writeOutput()
             return True
-        elif match(currentNodeLevel, '(') and aParams(currentNodeLevel) and match(currentNodeLevel, ')'):
-            print("variableOrFuncCallTail -> '(' aParams ')'")
+        if indices(currentNodeLevel):
+            logDerivationRule("variableOrFuncCallTail -> indices")
+            writeOutput()
             return True
     elif lookahead.tokenType  in follow['variableOrFuncCallTail']:
         newTreeNode(currentNodeLevel, 'EPSILON', True)
-        print("variableOrFuncCallTail -> EPSILON")
+        logDerivationRule("variableOrFuncCallTail -> EPSILON")
+        writeOutput()
         return True
+    #
     return False
 
 def variable(currentNodeLevel):
+    if not skipErrors(first['variable'], follow['variable']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'variable', False)
     if   lookahead.tokenType  in first['variable']:
         if match(currentNodeLevel, 'id') and idnests(currentNodeLevel) and indices(currentNodeLevel):
-            print("variable -> 'id' idnests indices")
+            logDerivationRule("variable -> 'id' idnests indices")
+            writeOutput()
             return True
+    
     return False
 
 def idnests(currentNodeLevel):
+    if not skipErrors(first['idnests'], follow['idnests']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'idnests', False)
     if   lookahead.tokenType  in first['idnests']:
         if idnest(currentNodeLevel) and idnests(currentNodeLevel):
-            print("idnests -> idnest idnests")
+            logDerivationRule("idnests -> idnest idnests")
+            writeOutput()
             return True
     elif lookahead.tokenType  in follow['idnests']:
         newTreeNode(currentNodeLevel, 'EPSILON', True)
-        print("idnests -> EPSILON")
+        logDerivationRule("idnests -> EPSILON")
+        writeOutput()
         return True
+    
     return False
 
 def indices(currentNodeLevel):
+    if not skipErrors(first['indices'], follow['indices']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'indices', False)
     if   lookahead.tokenType  in first['indices']:
         if indice(currentNodeLevel) and indices(currentNodeLevel):
-            print("indices -> indice indices")
+            logDerivationRule("indices -> indice indices")
+            writeOutput()
             return True
     elif lookahead.tokenType  in follow['indices']:
         newTreeNode(currentNodeLevel, 'EPSILON', True)
-        print("indices -> EPSILON")
+        logDerivationRule("indices -> EPSILON")
+        writeOutput()
         return True
+    parent = currentNodeLevel.parent
+    parent.children.remove(currentNodeLevel)
     return False
 
 def idnest(currentNodeLevel):
+    if not skipErrors(first['idnest'], follow['idnest']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'idnest', False)
     if   lookahead.tokenType  in first['idnest']:
         if idnestHead(currentNodeLevel) and match(currentNodeLevel, 'id'):
-            print("idnest -> idnestHead 'id'")
+            logDerivationRule("idnest -> idnestHead 'id'")
+            writeOutput()
             return True
+    
     return False
 
 def idnestHead(currentNodeLevel):
+    if not skipErrors(first['idnestHead'], follow['idnestHead']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'idnestHead', False)
     if   lookahead.tokenType  in first['idnestHead']:
         if match(currentNodeLevel, '.') and idnestHeadTail(currentNodeLevel):
-            print("idnestHead -> '.' idnestHeadTail")
+            logDerivationRule("idnestHead -> '.' idnestHeadTail")
+            writeOutput()
             return True
+    
     return False
 
 def idnestHeadTail(currentNodeLevel):
+    if not skipErrors(first['idnestHeadTail'], follow['idnestHeadTail']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'idnestHeadTail', False)
     if   lookahead.tokenType  in first['idnestHeadTail']:
         if indices(currentNodeLevel):
-            print("idnestHeadTail -> indices")
+            logDerivationRule("idnestHeadTail -> indices")
+            writeOutput()
             return True
         elif match(currentNodeLevel, '(') and aParams(currentNodeLevel) and match(currentNodeLevel, ')'):
-            print("idnestHeadTail -> '(' aParams ')'")
+            logDerivationRule("idnestHeadTail -> '(' aParams ')'")
+            writeOutput()
             return True
     elif  lookahead.tokenType  in follow['idnestHeadTail']:
         newTreeNode(currentNodeLevel, 'EPSILON', True)
-        print("idnestHeadTail -> EPSILON")
+        logDerivationRule("idnestHeadTail -> EPSILON")
+        writeOutput()
         return True
     return False
 
 def indice(currentNodeLevel):
+    if not skipErrors(first['indice'], follow['indice']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'indice', False)
     if   lookahead.tokenType  in first['indice']:
         if match(currentNodeLevel, '[') and arithExpr(currentNodeLevel) and match(currentNodeLevel, ']'):
-            print("indice -> '[' arithExpr ']'")
+            logDerivationRule("indice -> '[' arithExpr ']'")
+            writeOutput()
             return True
+    
     return False
 
 def arraySize(currentNodeLevel):
+    if not skipErrors(first['arraySize'], follow['arraySize']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'arraySize', False)
     if   lookahead.tokenType  in first['arraySize']:
         if match(currentNodeLevel, '[') and match(currentNodeLevel, 'intNum') and match(currentNodeLevel, ']'):
-            print("arraySize -> '[' 'intNum' ']'")
+            logDerivationRule("arraySize -> '[' 'intNum' ']'")
+            writeOutput()
             return True
+    
     return False
 
 def vType(currentNodeLevel):
+    if not skipErrors(first['type'], follow['type']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'type', False)
     if   lookahead.tokenType  in first['type']:
         if match(currentNodeLevel, 'int'):
-            print("type -> 'int'")
+            logDerivationRule("type -> 'int'")
+            writeOutput()
             return True
         elif match(currentNodeLevel, 'float'):
-            print("type -> 'float'")
+            logDerivationRule("type -> 'float'")
+            writeOutput()
             return True
         elif match(currentNodeLevel, 'id'):
-            print("type -> 'id'")
+            logDerivationRule("type -> 'id'")
+            writeOutput()
             return True
+    
     return False
 
 def fParams(currentNodeLevel):
+    if not skipErrors(first['fParams'], follow['fParams']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'fParams', False)
     if   lookahead.tokenType  in first['fParams']:
         if vType(currentNodeLevel) and match(currentNodeLevel, 'id') and arrayDimenssion(currentNodeLevel) and fParamsTailList(currentNodeLevel):
-            print("fParams -> type 'id' arrayDimenssion fParamsTailList")
+            logDerivationRule("fParams -> type 'id' arrayDimenssion fParamsTailList")
+            writeOutput()
             return True
     elif   lookahead.tokenType  in follow['fParams']:
         newTreeNode(currentNodeLevel, 'EPSILON', True)
-        print("fParams -> EPSILON")
+        logDerivationRule("fParams -> EPSILON")
+        writeOutput()
         return True
+    
     return False
 
 def aParams(currentNodeLevel):
+    if not skipErrors(first['aParams'], follow['aParams']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'aParams', False)
     if   lookahead.tokenType  in first['aParams']:
-        if expr(currentNodeLevel) and aParamsTailLt(currentNodeLevel):
-            print("aParams -> expr aParamsTailLt")
+        if expr(currentNodeLevel) and aParamsTailList(currentNodeLevel):
+            logDerivationRule("aParams -> expr aParamsTailList")
+            writeOutput()
             return True
     elif   lookahead.tokenType  in follow['aParams']:
         newTreeNode(currentNodeLevel, 'EPSILON', True)
-        print("aParams -> EPSILON")
+        logDerivationRule("aParams -> EPSILON")
+        writeOutput()
         return True
+    
     return False
 
 def fParamsTail(currentNodeLevel):
+    if not skipErrors(first['fParamsTail'], follow['fParamsTail']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'fParamsTail', False)
     if   lookahead.tokenType  in first['fParamsTail']:
         if match(currentNodeLevel, ',') and vType(currentNodeLevel) and match(currentNodeLevel, 'id') and arrayDimenssion(currentNodeLevel):
-            print("fParamsTail -> ',' type 'id' arrayDimenssion")
+            logDerivationRule("fParamsTail -> ',' type 'id' arrayDimenssion")
+            writeOutput()
             return True
+    
     return False
 
 def aParamsTail(currentNodeLevel):
+    if not skipErrors(first['aParamsTail'], follow['aParamsTail']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'aParamsTail', False)
     if   lookahead.tokenType  in first['aParamsTail']:
         if match(currentNodeLevel, ',') and expr(currentNodeLevel):
-            print("aParamsTail -> ',' expr")
+            logDerivationRule("aParamsTail -> ',' expr")
+            writeOutput()
             return True
+    
     return False
 
 def fParamsTailList(currentNodeLevel):
+    if not skipErrors(first['fParamsTailList'], follow['fParamsTailList']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'fParamsTailList', False)
     if   lookahead.tokenType  in first['fParamsTailList']:
         if fParamsTail(currentNodeLevel) and fParamsTailList(currentNodeLevel):
-            print("fParamsTailList -> fParamsTail fParamsTailList")
+            logDerivationRule("fParamsTailList -> fParamsTail fParamsTailList")
+            writeOutput()
             return True
     elif   lookahead.tokenType  in follow['fParamsTailList']:
         newTreeNode(currentNodeLevel, 'EPSILON', True)
-        print("fParamsTailList -> EPSILON")
+        logDerivationRule("fParamsTailList -> EPSILON")
+        writeOutput()
         return True
+    
     return False
 
-def aParamsTailLt(currentNodeLevel):
-    currentNodeLevel = newTreeNode(currentNodeLevel, 'aParamsTailLt', False)
-    if   lookahead.tokenType  in first['aParams']:
-        if aParamsTail(currentNodeLevel) and aParamsTailLt(currentNodeLevel):
-            print("aParamsTailLt -> aParamsTail aParamsTailLt")
+def aParamsTailList(currentNodeLevel):
+    if not skipErrors(first['aParamsTailList'], follow['aParamsTailList']): return False
+    currentNodeLevel = newTreeNode(currentNodeLevel, 'aParamsTailList', False)
+    if   lookahead.tokenType  in first['aParamsTailList']:
+        if aParamsTail(currentNodeLevel) and aParamsTailList(currentNodeLevel):
+            logDerivationRule("aParamsTailList -> aParamsTail aParamsTailList")
+            writeOutput()
             return True
-    elif   lookahead.tokenType  in follow['aParams']:
+    elif   lookahead.tokenType  in follow['aParamsTailList']:
         newTreeNode(currentNodeLevel, 'EPSILON', True)
-        print("aParamsTailLt -> EPSILON")
+        logDerivationRule("aParamsTailList -> EPSILON")
+        writeOutput()
         return True
     return False
 
 def assignOp(currentNodeLevel):
+    if not skipErrors(first['assignOp'], follow['assignOp']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'assignOp', False)
     if   lookahead.tokenType  in first['assignOp']:
         if match(currentNodeLevel, '='):
-            print("assignOp -> '='")
+            logDerivationRule("assignOp -> '='")
+            writeOutput()
             return True
+    
     return False
 
 def relOp(currentNodeLevel):
+    if not skipErrors(first['relOp'], follow['relOp']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'relOp', False)
     if   lookahead.tokenType  in first['relOp']:
         if match(currentNodeLevel, 'eq'):
-            print("relOp -> 'eq'")
+            logDerivationRule("relOp -> 'eq'")
+            writeOutput()
             return True
         elif match(currentNodeLevel, 'neq'):
-            print("relOp -> 'neq'")
+            logDerivationRule("relOp -> 'neq'")
+            writeOutput()
             return True
         elif match(currentNodeLevel, 'lt'):
-            print("relOp -> 'lt'")
+            logDerivationRule("relOp -> 'lt'")
+            writeOutput()
             return True
         elif match(currentNodeLevel, 'gt'):
-            print("relOp -> 'gt'")
+            logDerivationRule("relOp -> 'gt'")
+            writeOutput()
             return True
         elif match(currentNodeLevel, 'leq'):
-            print("relOp -> 'leq'")
+            logDerivationRule("relOp -> 'leq'")
+            writeOutput()
             return True
         elif match(currentNodeLevel, 'geq'):
-            print("relOp -> 'geq'")
+            logDerivationRule("relOp -> 'geq'")
+            writeOutput()
             return True
+    
     return False
 
 def addOp(currentNodeLevel):
+    if not skipErrors(first['addOp'], follow['addOp']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'addOp', False)
     if   lookahead.tokenType  in first['addOp']:
         if match(currentNodeLevel, '+'):
-            print("addOp -> '+'")
+            logDerivationRule("addOp -> '+'")
+            writeOutput()
             return True
         if match(currentNodeLevel, '-'):
-            print("addOp -> '-'")
+            logDerivationRule("addOp -> '-'")
+            writeOutput()
             return True
         if match(currentNodeLevel, 'or'):
-            print("addOp -> 'or'")
+            logDerivationRule("addOp -> 'or'")
+            writeOutput()
             return True
+    
     return False
 
 def multOp(currentNodeLevel):
+    #if not skipErrors(first['multOp'], follow['multOp']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'multOp', False)
-    print(first['multOp'])
     if   lookahead.tokenType  in first['multOp']:
         if match(currentNodeLevel, '*'):
-            print("multOp -> '*'")
+            logDerivationRule("multOp -> '*'")
+            writeOutput()
             return True
         if match(currentNodeLevel, '/'):
-            print("multOp -> '/'")
+            logDerivationRule("multOp -> '/'")
+            writeOutput()
             return True
         if match(currentNodeLevel, 'and'):
-            print("multOp -> 'and'")
+            logDerivationRule("multOp -> 'and'")
+            writeOutput()
             return True
     return False
 

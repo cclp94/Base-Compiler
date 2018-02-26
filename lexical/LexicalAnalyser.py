@@ -8,10 +8,11 @@ class LexicalAnalyser:
     LOGS_DIR= 'lexical/logs/'
     ERROR_FILE = 'error.log'
 
-    def __init__(self, srcCode, filepath):
+    def __init__(self, srcCode, filepath, logFile):
         self.filepath = filepath 
         self.__src = srcCode
         self.__pointer = 0
+        self.logFile = logFile
         # init table
         self.__table = LexicalTable()
 
@@ -61,6 +62,8 @@ class LexicalAnalyser:
                 self.__fileError(repr(error))
                 print(repr(error))
             self.__pointer += 1
+        if token:
+            self.logFile.write(token.tokenType+" ")
         return token
 
     def __lookupTable(self, state, lookup):

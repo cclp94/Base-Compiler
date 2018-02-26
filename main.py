@@ -3,12 +3,13 @@ import os
 from lexical.LexicalAnalyser import *
 from syntactic.SyntacticalAnalyser import parse
 
-OUTPUT_FILE = "lexical/logs/output.txt"
+LEXICAL_OUTPUT_FILE = "./logs/lexical/output.log"
+SYNTACTICAL_OUTPUT_FILE = "./logs/syntactical/output.log"
+SYNTACTICAL_ERROR_FILE = "./logs/syntactical/error.log"
 
 def showUsage(msg):
     print("ERROR: "+msg+":\nUsage: py Main.py -f <file path> -o\n-f <file path>: source code to analyse\n-o: generate output on log [optional]")
 
-#try:
 #get argument count
 arg_count = len(sys.argv)
 # if num of arguments is correct
@@ -18,31 +19,28 @@ if(arg_count > 1):
     if flag == '-f':
         # get file path
         filepath =sys.argv[2]
-        out = None
+        lexOut = None
+        synOut = None
+        synErrOut = None
         # open file
         f = open(filepath, 'r')
         src = f.read()
         f.close()
         # check if -o flag was present, if so create logs folder and create output file
         if arg_count == 4:
-            if not os.path.exists("lexical/logs/"):
-                os.makedirs("lexical/logs/")
-            out = open(OUTPUT_FILE, 'w')
+            if not os.path.exists("./logs/"):
+                os.makedirs("./logs/")
+            if not os.path.exists("./logs/syntactical/"):
+                os.makedirs("./logs/syntactical/")
+            if not os.path.exists("./logs/lexical/"):
+                os.makedirs("./logs/lexical/")
+            lexOut = open(LEXICAL_OUTPUT_FILE, 'w')
+            synOut = open(SYNTACTICAL_OUTPUT_FILE, 'w')
+            synErrOut = open(SYNTACTICAL_ERROR_FILE, 'w')
         #initialize Lexical Analyser
-        l = LexicalAnalyser(src, filepath)
-        # iterate through Token Stream
-        print(parse(l))
-        # for token in l:
-        #     print(token)
-        #     if out:
-        #         # generate output file
-        #         out.write(token.serialize() + ' ')
-        # if out:
-        #     out.write('EOU')
-        #     out.close()
-#     else:
-#         raise Exception('Wrong argumets')
-# else:
-#     raise Exception('Wrong argumets')
-# except Exception as error:
-#     showUsage(repr(error))
+        l = LexicalAnalyser(src, filepath, lexOut)
+        parse(l, synOut, synErrOut)
+        if lexOut:
+            lexOut.close()
+        if synOut:
+            synOut.close()
