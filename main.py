@@ -1,5 +1,7 @@
 import sys
 import os
+from semantic.visitors.SymbolTableCreatorVisitor import *
+from semantic.visitors.TypeCheckingVisitor import *
 from lexical.LexicalAnalyser import *
 from syntactic.SyntacticalAnalyser import parse
 
@@ -39,8 +41,20 @@ if(arg_count > 1):
             synErrOut = open(SYNTACTICAL_ERROR_FILE, 'w')
         #initialize Lexical Analyser
         l = LexicalAnalyser(src, filepath, lexOut)
-        parse(l, synOut, synErrOut)
+        ast = parse(l, synOut, synErrOut)
+        if ast:
+            f = open('./logs/syntactical/parseTree.txt', 'w')
+            f.write(str(ast))
+            f.close()
+
+            # create symbol table
+            tableCreationVisitor = SymbolTableCreatorVisitor()
+            typeCheckingVisitor = TypeCheckingVisitor()
+            ast.accept(tableCreationVisitor)
+            ast.accept(typeCheckingVisitor)
         if lexOut:
             lexOut.close()
         if synOut:
             synOut.close()
+        if synErrOut:
+            synErrOut.close()
