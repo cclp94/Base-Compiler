@@ -16,6 +16,13 @@ class SymbolTable:
             elif entry.name == identifier:
                 return entry
 
+    def searchKind(self, entryKind):
+        entries = []
+        for entry in self.entries:
+            if entry.kind == entryKind:
+                entries.append(entry)
+        return entries
+
     def __str__(self):
         string = '-------------------------------------------------------------------------------------\n' + str(self.name) + ' @ ' + hex(id(self)) +'\n'
         for entry in self.entries:

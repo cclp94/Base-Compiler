@@ -1,0 +1,20 @@
+/*
+    This test file test:
+    Circular inheritance error
+*/
+
+class A : B,C{
+    int memberA;
+};
+
+class C : A{
+    int memberC;
+};
+
+class B : C{
+    int memberB;
+};
+
+program{
+
+};

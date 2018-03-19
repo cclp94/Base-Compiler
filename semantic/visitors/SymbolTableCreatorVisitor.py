@@ -90,8 +90,8 @@ class SymbolTableCreatorVisitor(Visitor):
             if len(paramChildren) == 3:
                 for dimension in paramChildren[2].getChildrenList():
                     paramType += '[' + str(dimension.value.value) + ']'
-                    paramsList += paramType
-                paramsList += ','
+            paramsList += paramType
+            paramsList += ','
             node.addTableEntry(SymbolTableEntry(paramChildren[1].value, 'parameter', paramType))
         body = children[4]
         bodyChildren = body.getChildrenList()
@@ -100,17 +100,6 @@ class SymbolTableCreatorVisitor(Visitor):
                 node.addTableEntry(child.symbolTableEntry)
         # add to class if namespace is defined
         if namespace:
-            # parentNode = node.parent
-            # classEntry = parentNode.symTable.search(namespace)
-            # if not classEntry:
-            #     print('Semantic Error at index ' + str(id2.index) + ': class ' + namespace + ' is not defined')
-            # else:
-            #     classTable = classEntry.link
-            #     methodEntry = classTable.search(name)
-            #     if methodEntry:
-            #         methodEntry.setLink(node.symTable)
-            #     else:
-            #         print('Semantic Error at index ' + str(id2.index) + ': Function '+ name + ' is not defined in class ' + namespace)
             node.createSelfNodeEntry(SymbolTableEntry(name, 'classMemberFunction:'+namespace, returnType+':'+paramsList, node.symTable))
         else:
             node.createSelfNodeEntry(SymbolTableEntry(name, 'function', returnType+':'+paramsList, node.symTable))
@@ -139,11 +128,7 @@ class SymbolTableCreatorVisitor(Visitor):
 
     @visit.register(InheritanceNode)
     def _(self, node):
-        children = node.getChildrenList()
-        inheritanceList = ''
-        for inh in children:
-            inheritanceList += inh.value.value + ','
-        entry = SymbolTableEntry('inheritance', 'inheritance', inheritanceList)
+        entry = SymbolTableEntry(node.value, 'inheritance', None)
         node.createSelfNodeEntry(entry)
 
     @visit.register(ForLoopNode)

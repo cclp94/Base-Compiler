@@ -241,11 +241,12 @@ def classDeclEntityTail(currentNodeLevel, typeNode, idNode, astNode):
 def inheritance(currentNodeLevel, astNode):
     if not skipErrors(first['inheritance'], follow['inheritance']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'inheritance', False)
-    idNode = [IdNode()]
+    idNode = [InheritanceNode()]
     multipleInheritanceNode = [IdNode()]
     if lookahead.tokenType  in first['inheritance']:
         if match(currentNodeLevel, ':') and match(currentNodeLevel, 'id', idNode) and multipleInheritance(currentNodeLevel, multipleInheritanceNode):
-            astNode[0] = (AbstractSyntaxNode.makeFamily([AbstractSyntaxNode('inheritance')], [idNode[0], multipleInheritanceNode[0]]))
+            astNode[0] = idNode[0]
+            astNode[0].addSibling(multipleInheritanceNode[0])
             logDerivationRule("inheritance -> ':' 'id' multipleInheritance ")
             writeOutput()
             return True
@@ -260,7 +261,7 @@ def inheritance(currentNodeLevel, astNode):
 def multipleInheritance(currentNodeLevel, astNode):
     if not skipErrors(first['multipleInheritance'], follow['multipleInheritance']): return False
     currentNodeLevel = newTreeNode(currentNodeLevel, 'multipleInheritance', False)
-    idNode = [IdNode()]
+    idNode = [InheritanceNode()]
     if lookahead.tokenType  in first['multipleInheritance']:
         if match(currentNodeLevel, ',') and match(currentNodeLevel, 'id', idNode) and multipleInheritance(currentNodeLevel, idNode):
             if not astNode[0].value:
@@ -690,7 +691,7 @@ def factor(currentNodeLevel, astNode):
             writeOutput()
             return True
         elif match(currentNodeLevel, 'not') and factor(currentNodeLevel, factorNode):
-            astNode[0] = (AbstractSyntaxNode.makeFamily([AbstractSyntaxNode('not')], [factorNode[0]]))
+            astNode[0] = (AbstractSyntaxNode.makeFamily([NotNode('not')], [factorNode[0]]))
             logDerivationRule("factor -> 'not' factor")
             writeOutput()
             return True
@@ -834,7 +835,7 @@ def idnestTail(currentNodeLevel, astNode):
             writeOutput()
             return True
         elif match(currentNodeLevel, '(') and aParams(currentNodeLevel, aParamsNode) and match(currentNodeLevel, ')'):
-            astNode[0] = (AbstractSyntaxNode.makeFamily([FCallNode('fCall')], [idNode[0], aParamsNode[0]]))
+            astNode[0] = (AbstractSyntaxNode.makeFamily([FunctionMemberCallNode('fCall')], [idNode[0], aParamsNode[0]]))
             logDerivationRule("idnestTail -> '(' aParams ')'")
             writeOutput()
             return True
@@ -927,7 +928,7 @@ def aParams(currentNodeLevel, astNode):
     listNode = [AbstractSyntaxNode()]
     if   lookahead.tokenType  in first['aParams']:
         if expr(currentNodeLevel, exprNode) and aParamsTailList(currentNodeLevel, listNode):
-            astNode[0] = (AbstractSyntaxNode.makeFamily([AbstractSyntaxNode('aParams')], [exprNode[0], listNode[0]]))
+            astNode[0] = (AbstractSyntaxNode.makeFamily([AParamsNode('aParams')], [exprNode[0], listNode[0]]))
             logDerivationRule("aParams -> expr aParamsTailList")
             writeOutput()
             return True

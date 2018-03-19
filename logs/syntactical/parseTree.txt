@@ -1,0 +1,24 @@
+prog: ProgNode
+	classDecl: ClassDeclNode
+		'[id:A]': IdNode
+		'[id:B]': InheritanceNode
+		'[id:C]': InheritanceNode
+		attributeDecl: ClassAttributeNode
+			'[int:int]': TypeNode
+			'[id:memberA]': IdNode
+	classDecl: ClassDeclNode
+		'[id:C]': IdNode
+		'[id:A]': InheritanceNode
+		None: IdNode
+		attributeDecl: ClassAttributeNode
+			'[int:int]': TypeNode
+			'[id:memberC]': IdNode
+	classDecl: ClassDeclNode
+		'[id:B]': IdNode
+		'[id:C]': InheritanceNode
+		None: IdNode
+		attributeDecl: ClassAttributeNode
+			'[int:int]': TypeNode
+			'[id:memberB]': IdNode
+	'[program:program]': ProgramNode
+		funcBody: FuncBodyNode

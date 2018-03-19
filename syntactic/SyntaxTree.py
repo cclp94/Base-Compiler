@@ -184,6 +184,8 @@ class ExprNode(AbstractSyntaxNode): pass
 class TermNode(AbstractSyntaxNode): pass
 class FactorNode(AbstractSyntaxNode): pass
 class AParamsNode(AbstractSyntaxNode): pass
-class FCallNode(AbstractSyntaxNode):pass
+class FunctionMemberCallNode(AbstractSyntaxNode):pass
 class DataMemberNode(AbstractSyntaxNode): pass
+class FCallNode(AbstractSyntaxNode): pass
 class SignNode(AbstractSyntaxNode): pass
+class NotNode(AbstractSyntaxNode): pass

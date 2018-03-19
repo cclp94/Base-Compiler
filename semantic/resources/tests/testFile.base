@@ -1,0 +1,80 @@
+/*
+This files tests:
+    Valid Operations:
+        class declaration
+        attribute declaration
+        variable declaration
+        class object declaration
+        object attribute assignment
+        Add and multiplication operations
+        array declaration
+        array assignment with indices
+        for loop
+        if statement
+    Invalid Operations Tested:
+        Assign with different types
+        Math with different types
+        Assign to array without correct indices
+        call to non existent object member
+        call to undefined function
+        use of out of scope variable
+        duplicated variable declaration
+
+*/
+
+class A {
+    int member1;
+    float member2;
+};
+
+program {
+    // Declarations
+    A aInstance;
+    int var1;
+    int var2;
+    int var3[100][100];
+    float var4;
+    float var5;
+    // Assignments
+    var1 = aInstance.member1;
+    var2 = 55 * var1;
+    var3[0][0] = var2 / 3;
+    var4 = 2.0 * 53.2 / 3.0;
+    // For loop with anonymous scope
+    for(int i = 0; i < var2; i = i +1){
+        int var6;
+        var6 = var2 * i;
+        var2 = i;
+    };
+    // If stat with anonymous scopes
+    if(var2 >= var3[0][0]) then {
+        int var6;
+        var6 = var3[0][0] *  2;
+        var2 = var6 * var2;
+    }else{
+        float var6;
+        var6 = var4 * 2.0;
+    };
+    // ======================================================================
+    // ======================================================================
+    // ======================================================================
+    // Start of Invalid tests
+    // Assign float to int
+    var4 = var1;
+    // Math with different types
+    var2 = var2 / 3.2;
+    // Assign to array without indeces
+    var3 = 3;               // int[][] cannot be assigned type (int)
+    var3[0] = 3;            // int[] cannot be assigned type (int)
+    var3[0][0] = 3;         // This is fine
+    // Function not declared
+    var2 = noFunction();    // Function to defined and assign error
+    // Member not defined
+    aInstance.member3 = 3;
+    var3 = aInstance.noFunction();
+    var3[0][0] = aInstance.member2;
+    // variable that is out of scope (undefined)
+    var6 = var1;
+    // TODO Duplicated variable name in scope
+    int var5;
+ };
