@@ -1,7 +1,7 @@
 class InheritedUtility {
  int member1;};
 class Utility : InheritedUtility {
- int var1[4][5][7][8][9][1][0];
+ int var1[4][5][7][8][9][2][3];
  float var2;
  int findMax(int array[100]);
  int findMin(int array[100]);};

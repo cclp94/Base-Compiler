@@ -1,7 +1,8 @@
 import sys
-import os
 from semantic.visitors.SymbolTableCreatorVisitor import *
 from semantic.visitors.TypeCheckingVisitor import *
+from codeGen.visitors.MemAllocationVisitor import *
+from codeGen.visitors.CodeGenVisitor import *
 from lexical.LexicalAnalyser import *
 from syntactic.SyntacticalAnalyser import parse
 
@@ -50,8 +51,14 @@ if(arg_count > 1):
             # create symbol table
             tableCreationVisitor = SymbolTableCreatorVisitor()
             typeCheckingVisitor = TypeCheckingVisitor()
+            memAllocationVisitor = MemAllocationVisitor()
+            codeGenVisitor = CodeGenVisitor('./bin/'+filepath.split('/')[-1].split('.')[0]+".m")
             ast.accept(tableCreationVisitor)
             ast.accept(typeCheckingVisitor)
+            print('=====================MEMORY================')
+            ast.accept(memAllocationVisitor)
+            print('=====================CODE GEN================')
+            ast.accept(codeGenVisitor, True)
         if lexOut:
             lexOut.close()
         if synOut:

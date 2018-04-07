@@ -1,0 +1,5 @@
+program{
+    int a;
+    a = 1;
+    put(a);
+};

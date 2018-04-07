@@ -68,6 +68,12 @@ class AbstractSyntaxNode:
     def createSelfNodeEntry(self, entry):
         self.symbolTableEntry = entry
 
+    def setEntryMemOffset(self, offset):
+        self.symbolTableEntry.setOffset(offset)
+
+    def setEntryMemSize(self, size):
+        self.symbolTableEntry.setSize(size)
+
     def overwrite(self, other):
         self.value = other.value
 
@@ -132,9 +138,10 @@ class AbstractSyntaxNode:
             node = node.rightSibling
         return children
 
-    def accept(self, visitor):
-        for child in self.getChildrenList():
-            child.accept(visitor)
+    def accept(self, visitor, visitorHandlesAccept=False):
+        if not visitorHandlesAccept:
+            for child in self.getChildrenList():
+                child.accept(visitor)
         visitor.visit(self)
 
 

@@ -92,7 +92,9 @@ class SymbolTableCreatorVisitor(Visitor):
                     paramType += '[' + str(dimension.value.value) + ']'
             paramsList += paramType
             paramsList += ','
-            node.addTableEntry(SymbolTableEntry(paramChildren[1].value, 'parameter', paramType))
+            paramEntry = SymbolTableEntry(paramChildren[1].value, 'parameter', paramType)
+            param.createSelfNodeEntry(paramEntry)
+            node.addTableEntry(paramEntry)
         body = children[4]
         bodyChildren = body.getChildrenList()
         for child in bodyChildren:
@@ -128,7 +130,7 @@ class SymbolTableCreatorVisitor(Visitor):
 
     @visit.register(InheritanceNode)
     def _(self, node):
-        entry = SymbolTableEntry(node.value, 'inheritance', None)
+        entry = SymbolTableEntry(node.value, 'inheritance', node.value.value)
         node.createSelfNodeEntry(entry)
 
     @visit.register(ForLoopNode)

@@ -1,0 +1,9 @@
+class error {
+    int ksfjo : aswd = 2;
+    noSemiColon = 2
+    functionDeclNoType(arrayNoClosingBrackets[1000]);
+};
+program{
+    float number = 33;
+    aksld 3;
+};
