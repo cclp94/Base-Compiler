@@ -37,6 +37,10 @@ class AbstractSyntaxNode:
         self.symTable = None
 
         self.nodeType = None
+        self.moonRegister = None
+
+    def setMoonRegister(self, rg):
+        self.moonRegister = rg
 
     def setValue(self, value):
         self.value = value

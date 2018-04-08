@@ -1,0 +1,22 @@
+program{
+  int aux;
+  int array[2];
+  int a[3][4][5];
+  int b[2][2];
+  b[0][1] = 3;
+  aux = 1;
+  //Simple test
+  array[0] = 1+2;
+  array[1] = array[0] *2;
+  put(array[1]+ 61);    // Should print C(67)
+  // Complete test:
+  // assigning to arrays
+  a[0][0][0] = 65;
+  // Assigning to array with dynamic indices
+  a[b[0][1]-aux][0][aux] = 97;
+  // lhs and rhs with dynamic index arrays
+  a[aux][3][3+aux] = a[0][aux-1][0] + aux;
+  put(a[0][0][0]);  // Should print A(65)
+  put(a[2][0][1]);  // Should print a(97)
+  put(a[1][3][4]);  // Should print B(66)
+};

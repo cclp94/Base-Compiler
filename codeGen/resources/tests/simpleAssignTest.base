@@ -1,5 +1,13 @@
 program{
     int a;
-    a = 1;
+    int b;
+    int c;
+    a = 65;
+    b = 70;
+    c = 97;
     put(a);
+    put(c);
+    put(b);
+    b = a;
+    put(b);
 };

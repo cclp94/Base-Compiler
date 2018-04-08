@@ -3,8 +3,12 @@ from lexical.Token import Token
 class SymbolTable:
     def __init__(self, name):
         self.name = name
+        self.tag = None
         self.entries = []
         self.offset = 0
+
+    def setTag(self, tag):
+        self.tag = tag
 
     def addEntry(self, entry):
         self.entries.append(entry)

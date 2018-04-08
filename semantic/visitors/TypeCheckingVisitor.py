@@ -73,7 +73,7 @@ class TypeCheckingVisitor(Visitor):
     def _(self, node):
         #check return type
         actualReturnType = node.leftMostChild.nodeType
-        expectedReturnType = node.parent.parent.symTable.search('returnType').entryType
+        expectedReturnType = node.findScope('returnType').entryType
         if actualReturnType == expectedReturnType:
             pass
         else:

@@ -3,6 +3,7 @@ from semantic.visitors.SymbolTableCreatorVisitor import *
 from semantic.visitors.TypeCheckingVisitor import *
 from codeGen.visitors.MemAllocationVisitor import *
 from codeGen.visitors.CodeGenVisitor import *
+from codeGen.Moon import Moon
 from lexical.LexicalAnalyser import *
 from syntactic.SyntacticalAnalyser import parse
 
@@ -59,6 +60,8 @@ if(arg_count > 1):
             ast.accept(memAllocationVisitor)
             print('=====================CODE GEN================')
             ast.accept(codeGenVisitor, True)
+            codeGenVisitor.output()
+            moon = Moon(codeGenVisitor.outputLocation)
         if lexOut:
             lexOut.close()
         if synOut:

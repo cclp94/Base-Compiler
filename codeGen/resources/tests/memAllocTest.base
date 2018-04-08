@@ -15,14 +15,11 @@
 
  int func1(int int532[5][3][2], float float100[100]){
    float float100;
-   a=a+b*c;
  };
 
  float func2(float float1, int int1){
    int int532[5][3][2];
    float float100[100];
-   a=a+b*c;
-   x=a+b*c;
    };
 
  program{
@@ -31,7 +28,4 @@
    float float100[100];
    class2 inst;
    int int1;
-   a=a+b*c;
-   x=a+b*c;
-   a=x+z*y;
   };

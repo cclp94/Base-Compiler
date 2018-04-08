@@ -1,0 +1,14 @@
+int sum(int a, int b){
+    return(a+b);
+};
+
+program{
+    int a;
+    int b;
+    int c;
+    a = 60;
+    b = 5;
+    c = sum(a+b, b);
+    put(sum(c+b, b));   // print P
+    put(c); // Should printA(65)
+};

@@ -1,0 +1,12 @@
+program{
+    int a;
+    int b;
+    int c;
+    a = 60;
+    b = 5;
+    c = a + b * b;
+    put(a+b); // Should print A
+    b = b * 24;
+    put(c); // Should print U
+    put(b);  // Should print x
+};

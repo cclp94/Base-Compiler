@@ -43,30 +43,55 @@ class MemAllocationVisitor(Visitor):
     @visit.register(ProgNode)
     @visit.register(ClassDeclNode)
     @visit.register(ProgramNode)
+    @visit.register(ScopeBlockNode)
+    def _(self, node):
+        children = node.symTable.entries
+        frameOffset = 0
+        for child in children:
+            child.setOffset(frameOffset)
+            frameOffset += child.size
+        node.symTable.setOffset(frameOffset)
+        if node.symbolTableEntry:
+            node.setEntryMemSize(frameOffset)
+        print(node.symTable)
+
+    @visit.register(ScopeBlockNode)
     def _(self, node):
         children = node.symTable.entries
         frameOffset = 0
         for child in children:
             child.setOffset(frameOffset-child.size)
             frameOffset -= child.size
-        node.symTable.setOffset(frameOffset)
+        node.symTable.setOffset(-frameOffset)
         if node.symbolTableEntry:
             node.setEntryMemSize(-frameOffset)
+        print(node.symTable)
+
+    @visit.register(IfStatementNode)
+    def _(self, node):
+        children = node.symTable.entries
+        frameOffset = 0
+        for child in children:
+            child.setOffset(frameOffset)
+            frameOffset += child.size
+        node.symTable.setOffset(frameOffset)
+        if node.symbolTableEntry:
+            node.setEntryMemSize(0)
         print(node.symTable)
 
     @visit.register(ClassSourceNode)
     def _(self, node):
         children = node.symTable.entries
         # reserve memory for  return address
-        frameOffset = -4
+        frameOffset = 4
         for child in children:
-            if not child.size:
+            if not child.size and child.size != 0:
                 child.setSize(self.typeSizeOf(node, child.entryType))
-            child.setOffset(frameOffset - child.size)
-            frameOffset -= child.size
-        node.symTable.setOffset(frameOffset)
+            child.setOffset(frameOffset)
+            frameOffset += child.size
+        node.symTable.setOffset(frameOffset-4)
         if node.symbolTableEntry:
-            node.setEntryMemSize(-frameOffset)
+            node.setEntryMemSize(frameOffset-4)
         print(node.symTable)
 
     @visit.register(ClassAttributeNode)
