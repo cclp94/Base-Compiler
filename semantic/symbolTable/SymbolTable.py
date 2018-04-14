@@ -31,6 +31,17 @@ class SymbolTable:
                 entries.append(entry)
         return entries
 
+    def getTotalEntryOffset(self, name, offset):
+        total = None
+        for entry in self.entries:
+            if (type(entry.name) is Token and entry.name.value == name) or entry.name == name:
+                return offset + entry.offset
+            if entry.link:
+                total = entry.link.getTotalEntryOffset(name, offset + entry.offset)
+                if total:
+                    break;
+        return total
+
     def __str__(self):
         string = '-------------------------------------------------------------------------------------\n' + str(self.name) + ' @ ' + hex(id(self)) +'\tScope offset: '+str(self.offset)+'\n'
         for entry in self.entries:

@@ -2,6 +2,7 @@ from semantic.visitors.Visitor import *
 import re
 
 class TypeCheckingVisitor(Visitor):
+    varNameCounter = 0
 
     def __init__(self):
         pass
@@ -68,6 +69,11 @@ class TypeCheckingVisitor(Visitor):
             return
         funcType = self.getType(scopeEntry.entryType)
         node.setNodeType(funcType)
+        # set moon tmp var entry
+        moonTmpVar =  self.generateTempVarName()
+        moonEntry = SymbolTableEntry(moonTmpVar, 'tempVar', funcType)
+        node.createSelfNodeEntry(moonEntry)
+        node.getScope().addEntry(moonEntry)
 
     @visit.register(ReturnNode)
     def _(self, node):
@@ -160,6 +166,13 @@ class TypeCheckingVisitor(Visitor):
         for memberNode in stack:
             memberNode.parent.setNodeType(entryType)
         node.setNodeType(entryType)
+        if type(node) is FunctionMemberCallNode:
+            # set moon tmp var entry
+            moonTmpVar = self.generateTempVarName()
+            moonEntry = SymbolTableEntry(moonTmpVar, 'tempVar', entryType)
+            node.createSelfNodeEntry(moonEntry)
+            node.getScope().addEntry(moonEntry)
+
 
     def isPrimitive(self, name):
         return bool(name.startswith('int') or name.startswith('float'))
@@ -198,6 +211,14 @@ class TypeCheckingVisitor(Visitor):
         if lhsType != rhsType:
             print("Semantic error at index " + str(node.value.index) + ": Operands must be of the same type. (" + lhsType + ") " + node.value.value + " (" + rhsType +  ")")
         node.setNodeType(lhsType)
+        moonTmpVar = self.generateTempVarName()
+        entry = SymbolTableEntry(moonTmpVar, 'tempVar', lhsType)
+        node.createSelfNodeEntry(entry)
+        node.getScope().addEntry(entry)
+
+    def generateTempVarName(self):
+        self.varNameCounter += 1
+        return 'tmpVar'+str(self.varNameCounter)
 
     @visit.register(SignNode)
     @visit.register(NotNode)
@@ -214,6 +235,8 @@ class TypeCheckingVisitor(Visitor):
             for dimension in children[2].getChildrenList():
                 nodeType += '['+dimension.value.value+']'
         node.setNodeType(nodeType)
+        if not self.isPrimitive(nodeType):
+            node.symbolTableEntry.setLink(node.parent.findScope(nodeType).link)
 
     @visit.register(IntegerNode)
     def _(self, node):
@@ -222,3 +245,19 @@ class TypeCheckingVisitor(Visitor):
     @visit.register(FloatNode)
     def _(self, node):
         node.setNodeType('float')
+
+    @visit.register(ClassMethodNode)
+    def _(self, node):
+        params = node.getChildrenList()[2].getChildrenList()
+        funcType = node.symbolTableEntry.entryType.split(':')[0]
+        name = node.symbolTableEntry.name.value
+        #find scope implementation
+        scope = node.parent.findScope(name)
+        #implementation params
+        implParams = scope.link.searchKind('parameter')
+        if len(params) != len(implParams):
+            print("Semantic Error at index " + str(node.value.index) + ": Function "+name+" declares a different amount of parameters than it was declared")
+        else:
+            for i in range(len(params)):
+                params[i].createSelfNodeEntry(implParams[i])
+

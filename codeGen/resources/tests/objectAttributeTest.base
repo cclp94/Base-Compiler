@@ -1,0 +1,12 @@
+class A{
+    int attr;
+    int attr2;
+};
+
+program{
+    int a;
+    A aInst;
+    aInst.attr = 8;
+    aInst.attr2 = 4;
+    put(aInst.attr2+61);
+};

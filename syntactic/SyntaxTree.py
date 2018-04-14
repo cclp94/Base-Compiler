@@ -38,6 +38,10 @@ class AbstractSyntaxNode:
 
         self.nodeType = None
         self.moonRegister = None
+        self.moonStackOffset = None
+
+    def setMoonStackOffset(self, offset):
+        self.moonStackOffset = offset
 
     def setMoonRegister(self, rg):
         self.moonRegister = rg

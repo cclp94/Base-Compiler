@@ -40,10 +40,8 @@ class MemAllocationVisitor(Visitor):
     #             node.addTableEntry(child.symbolTableEntry)
     #     print(node.symTable)
 
-    @visit.register(ProgNode)
     @visit.register(ClassDeclNode)
     @visit.register(ProgramNode)
-    @visit.register(ScopeBlockNode)
     def _(self, node):
         children = node.symTable.entries
         frameOffset = 0
@@ -71,13 +69,31 @@ class MemAllocationVisitor(Visitor):
     def _(self, node):
         children = node.symTable.entries
         frameOffset = 0
-        for child in children:
-            child.setOffset(frameOffset)
-            frameOffset += child.size
+        children[0].setOffset(frameOffset)
+        frameOffset += children[0].size
+        children[1].setOffset(frameOffset)
+        frameOffset += children[1].size
+        children[2].setOffset(-children[2].size)
         node.symTable.setOffset(frameOffset)
         if node.symbolTableEntry:
             node.setEntryMemSize(0)
         print(node.symTable)
+
+    @visit.register(ForLoopNode)
+    def _(self, node):
+        children = node.symTable.entries
+        frameOffset = 0
+        for child in children:
+            child.setOffset(frameOffset-child.size)
+            frameOffset -= child.size
+        node.symTable.setOffset(frameOffset)
+        if node.symbolTableEntry:
+            node.setEntryMemSize(0)
+        print(node.symTable)
+
+    @visit.register(ClassMethodNode)
+    def _(self, node):
+        node.setEntryMemSize(0)
 
     @visit.register(ClassSourceNode)
     def _(self, node):
@@ -98,6 +114,11 @@ class MemAllocationVisitor(Visitor):
     @visit.register(VariableDeclNode)
     @visit.register(FuncParamNode)
     @visit.register(InheritanceNode)
+    @visit.register(AddOpNode)
+    @visit.register(MultOpNode)
+    @visit.register(RelOpNode)
+    @visit.register(FCallNode)
+    @visit.register(FunctionMemberCallNode)
     def _(self, node):
         size = self.typeSizeOf(node)
         node.setEntryMemSize(size)

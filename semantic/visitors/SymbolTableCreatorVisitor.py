@@ -1,6 +1,7 @@
 from semantic.visitors.Visitor import *
 
 class SymbolTableCreatorVisitor(Visitor):
+    varNameCounter = 0
 
     def __init__(self):
         pass
@@ -164,3 +165,4 @@ class SymbolTableCreatorVisitor(Visitor):
                 node.addTableEntry(child.symbolTableEntry)
         node.createSelfNodeEntry(SymbolTableEntry('statBlockScope', 'statBlockScope', None, node.symTable))
         print(node.symTable)
+

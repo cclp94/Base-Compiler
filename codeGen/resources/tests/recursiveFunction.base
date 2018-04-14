@@ -7,5 +7,5 @@ int factorial(int num){
 };
 
 program {
-    put(factorial(10)+20);
+    put(factorial(4)+factorial(4)+20);
 };

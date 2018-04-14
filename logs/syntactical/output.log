@@ -1,250 +1,146 @@
+class 
+class id 
+inheritance -> EPSILON
+class id 
+class id { 
+class id { int 
+type -> 'int'
+class id { int 
+class id { int id 
+classDeclEntityTail -> EPSILON
+class id { int id 
+class id { int id ; 
+classDeclEntity -> type 'id' classDeclEntityTail ';'
+class id { int id ; 
+classDeclEntities -> EPSILON
+class id { int id ; 
+classDeclEntities -> classDeclEntity classDeclEntities
+class id { int id ; 
+class id { int id ; } 
+class id { int id ; } ; 
+classDecl -> 'class' 'id' inheritance '{' classDeclEntities '}' ';'
+class id { int id ; } ; 
+class id { int id ; } ; class 
+class id { int id ; } ; class id 
+inheritance -> EPSILON
+class id { int id ; } ; class id 
+class id { int id ; } ; class id { 
+class id { int id ; } ; class id { int 
+type -> 'int'
+class id { int id ; } ; class id { int 
+class id { int id ; } ; class id { int id 
+classDeclEntityTail -> EPSILON
+class id { int id ; } ; class id { int id 
+class id { int id ; } ; class id { int id ; 
+classDeclEntity -> type 'id' classDeclEntityTail ';'
+class id { int id ; } ; class id { int id ; 
+class id { int id ; } ; class id { int id ; id 
+type -> 'id'
+class id { int id ; } ; class id { int id ; id 
+class id { int id ; } ; class id { int id ; id id 
+classDeclEntityTail -> EPSILON
+class id { int id ; } ; class id { int id ; id id 
+class id { int id ; } ; class id { int id ; id id ; 
+classDeclEntity -> type 'id' classDeclEntityTail ';'
+class id { int id ; } ; class id { int id ; id id ; 
+classDeclEntities -> EPSILON
+class id { int id ; } ; class id { int id ; id id ; 
+classDeclEntities -> classDeclEntity classDeclEntities
+class id { int id ; } ; class id { int id ; id id ; 
+classDeclEntities -> classDeclEntity classDeclEntities
+class id { int id ; } ; class id { int id ; id id ; 
+class id { int id ; } ; class id { int id ; id id ; } 
+class id { int id ; } ; class id { int id ; id id ; } ; 
+classDecl -> 'class' 'id' inheritance '{' classDeclEntities '}' ';'
+class id { int id ; } ; class id { int id ; id id ; } ; 
 classHeaders -> EPSILON
-
-int 
-type -> 'int'
-int 
-int id 
-namespace -> EPSILON
-int id 
-int id ( 
-int id ( int 
-type -> 'int'
-int id ( int 
-int id ( int id 
-arrayDimenssion -> EPSILON
-int id ( int id 
-fParamsTailList -> EPSILON
-int id ( int id 
-fParams -> type 'id' arrayDimenssion fParamsTailList
-int id ( int id 
-int id ( int id ) 
-funcHead -> type 'id' namespace  '(' fParams ')'
-int id ( int id ) 
-int id ( int id ) { 
-int id ( int id ) { if 
-int id ( int id ) { if ( 
-int id ( int id ) { if ( id 
-variableOrFuncCallTail -> EPSILON
-int id ( int id ) { if ( id 
-idnests -> EPSILON
-int id ( int id ) { if ( id 
-variableOrFuncCall -> 'id' variableOrFuncCallTail idnests
-int id ( int id ) { if ( id 
-factor -> variableOrFuncCall
-int id ( int id ) { if ( id 
-termTail -> EPSILON
-int id ( int id ) { if ( id 
-term -> factor termTail
-int id ( int id ) { if ( id 
-arithExprTail -> EPSILON
-int id ( int id ) { if ( id 
-arithExpr -> term relOp
-int id ( int id ) { if ( id 
-int id ( int id ) { if ( id leq 
-relOp -> 'leq'
-int id ( int id ) { if ( id leq 
-int id ( int id ) { if ( id leq intNum 
-factor -> intNum
-int id ( int id ) { if ( id leq intNum 
-termTail -> EPSILON
-int id ( int id ) { if ( id leq intNum 
-term -> factor termTail
-int id ( int id ) { if ( id leq intNum 
-arithExprTail -> EPSILON
-int id ( int id ) { if ( id leq intNum 
-arithExpr -> term relOp
-int id ( int id ) { if ( id leq intNum 
-exprTail -> relOp arithExpr
-int id ( int id ) { if ( id leq intNum 
-expr -> arithExpr exprTail
-int id ( int id ) { if ( id leq intNum 
-int id ( int id ) { if ( id leq intNum ) 
-int id ( int id ) { if ( id leq intNum ) then 
-int id ( int id ) { if ( id leq intNum ) then return 
-int id ( int id ) { if ( id leq intNum ) then return ( 
-int id ( int id ) { if ( id leq intNum ) then return ( intNum 
-factor -> intNum
-int id ( int id ) { if ( id leq intNum ) then return ( intNum 
-termTail -> EPSILON
-int id ( int id ) { if ( id leq intNum ) then return ( intNum 
-term -> factor termTail
-int id ( int id ) { if ( id leq intNum ) then return ( intNum 
-arithExprTail -> EPSILON
-int id ( int id ) { if ( id leq intNum ) then return ( intNum 
-arithExpr -> term relOp
-int id ( int id ) { if ( id leq intNum ) then return ( intNum 
-exprTail -> EPSILON
-int id ( int id ) { if ( id leq intNum ) then return ( intNum 
-expr -> arithExpr exprTail
-int id ( int id ) { if ( id leq intNum ) then return ( intNum 
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) 
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; 
-statement -> 'return' '(' expr ')' ';'
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; 
-statBlock -> statement
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; 
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else 
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { 
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return 
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( 
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id 
-variableOrFuncCallTail -> EPSILON
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id 
-idnests -> EPSILON
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id 
-variableOrFuncCall -> 'id' variableOrFuncCallTail idnests
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id 
-factor -> variableOrFuncCall
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id 
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * 
-multOp -> '*'
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * 
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id 
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( 
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id 
-variableOrFuncCallTail -> EPSILON
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id 
-idnests -> EPSILON
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id 
-variableOrFuncCall -> 'id' variableOrFuncCallTail idnests
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id 
-factor -> variableOrFuncCall
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id 
-termTail -> EPSILON
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id 
-term -> factor termTail
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id 
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - 
-addOp -> '-'
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - 
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum 
-factor -> intNum
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum 
-termTail -> EPSILON
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum 
-term -> factor termTail
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum 
-arithExprTail -> EPSILON
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum 
-arithExprTail -> addOp term arithExprTail 
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum 
-arithExpr -> term relOp
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum 
-exprTail -> EPSILON
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum 
-expr -> arithExpr exprTail
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum 
-aParamsTailList -> EPSILON
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum 
-aParams -> expr aParamsTailList
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum 
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) 
-variableOrFuncCallTail -> '(' aParams ')'
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) 
-idnests -> EPSILON
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) 
-variableOrFuncCall -> 'id' variableOrFuncCallTail idnests
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) 
-factor -> variableOrFuncCall
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) 
-termTail -> EPSILON
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) 
-termTail -> multOp factor termTail
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) 
-term -> factor termTail
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) 
-arithExprTail -> EPSILON
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) 
-arithExpr -> term relOp
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) 
-exprTail -> EPSILON
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) 
-expr -> arithExpr exprTail
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) 
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) 
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; 
-statement -> 'return' '(' expr ')' ';'
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; 
-statements -> EPSILON
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; 
-statements -> statement statements
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; 
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } 
-statBlock -> '{' statements '}'
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } 
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; 
-statement -> 'if' '(' expr ')' 'then' statBlock 'else' statBlock ';'
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; 
-statements -> EPSILON
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; 
-statements -> statement statements
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; 
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } 
-funcBody -> '{' statements '}'
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } 
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; 
-funcDef -> funcHead funcBody ';'
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; 
+class id { int id ; } ; class id { int id ; id id ; } ; 
+classHeaders -> classDecl classHeaders
+class id { int id ; } ; class id { int id ; id id ; } ; 
+classHeaders -> classDecl classHeaders
+class id { int id ; } ; class id { int id ; id id ; } ; 
 classSources -> EPSILON
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; 
-classSources -> funcDef classSources
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; 
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; program 
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; program { 
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; program { put 
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; program { put ( 
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; program { put ( id 
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; program { put ( id ( 
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; program { put ( id ( intNum 
-factor -> intNum
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; program { put ( id ( intNum 
-termTail -> EPSILON
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; program { put ( id ( intNum 
-term -> factor termTail
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; program { put ( id ( intNum 
-arithExprTail -> EPSILON
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; program { put ( id ( intNum 
-arithExpr -> term relOp
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; program { put ( id ( intNum 
-exprTail -> EPSILON
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; program { put ( id ( intNum 
-expr -> arithExpr exprTail
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; program { put ( id ( intNum 
-aParamsTailList -> EPSILON
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; program { put ( id ( intNum 
-aParams -> expr aParamsTailList
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; program { put ( id ( intNum 
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; program { put ( id ( intNum ) 
-variableOrFuncCallTail -> '(' aParams ')'
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; program { put ( id ( intNum ) 
+class id { int id ; } ; class id { int id ; id id ; } ; 
+class id { int id ; } ; class id { int id ; id id ; } ; program 
+class id { int id ; } ; class id { int id ; id id ; } ; program { 
+class id { int id ; } ; class id { int id ; id id ; } ; program { id 
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id 
+arrayDimenssion -> EPSILON
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id 
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; 
+varAssignOrDeclTail -> 'id' arrayDimenssion ';'
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; 
+varAssignOrDecl -> 'id' varAssignOrDeclTail
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; 
+statement -> varAssignOrDecl
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; 
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id 
+indices -> EPSILON
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id 
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . 
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id 
+idnestTail -> EPSILON
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id 
+idnest -> '.' 'id' idnestTail
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id 
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . 
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id 
+idnestTail -> EPSILON
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id 
+idnest -> '.' 'id' idnestTail
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id 
 idnests -> EPSILON
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; program { put ( id ( intNum ) 
-variableOrFuncCall -> 'id' variableOrFuncCallTail idnests
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; program { put ( id ( intNum ) 
-factor -> variableOrFuncCall
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; program { put ( id ( intNum ) 
-termTail -> EPSILON
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; program { put ( id ( intNum ) 
-term -> factor termTail
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; program { put ( id ( intNum ) 
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; program { put ( id ( intNum ) + 
-addOp -> '+'
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; program { put ( id ( intNum ) + 
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; program { put ( id ( intNum ) + intNum 
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id 
+idnests -> idnest idnests
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id 
+idnests -> idnest idnests
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id 
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = 
+assignOp -> '='
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = 
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum 
 factor -> intNum
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; program { put ( id ( intNum ) + intNum 
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum 
 termTail -> EPSILON
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; program { put ( id ( intNum ) + intNum 
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum 
 term -> factor termTail
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; program { put ( id ( intNum ) + intNum 
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum 
 arithExprTail -> EPSILON
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; program { put ( id ( intNum ) + intNum 
-arithExprTail -> addOp term arithExprTail 
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; program { put ( id ( intNum ) + intNum 
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum 
 arithExpr -> term relOp
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; program { put ( id ( intNum ) + intNum 
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum 
 exprTail -> EPSILON
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; program { put ( id ( intNum ) + intNum 
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum 
 expr -> arithExpr exprTail
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( id - intNum ) ) ; } ; } ; program { put ( id ( intNum ) + intNum 
-int id ( int id ) { if ( id leq intNum ) then return ( intNum ) ; else { return ( id * id ( 
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum 
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; 
+varAssignOrDeclTail -> indices idnests assignOp expr ';'
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; 
+varAssignOrDecl -> 'id' varAssignOrDeclTail
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; 
+statement -> varAssignOrDecl
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; 
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; put 
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; put ( 
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; put ( id 
+variableOrFuncCallTail -> EPSILON
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; put ( id 
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; put ( id . 
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; put ( id . id 
+idnestTail -> EPSILON
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; put ( id . id 
+idnest -> '.' 'id' idnestTail
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; put ( id . id 
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; put ( id . id . 
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; put ( id . id . id 
+idnestTail -> EPSILON
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; put ( id . id . id 
+idnest -> '.' 'id' idnestTail
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; put ( id . id . id 
+idnests -> EPSILON
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; put ( id . id . id 
+idnests -> idnest idnests
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; put ( id . id . id 
+idnests -> idnest idnests
+class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; put ( id . id . id 
+variableOrFuncCall -> 'id' variableOrFuncCallTail idnests

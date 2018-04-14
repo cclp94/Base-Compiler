@@ -1,28 +1,9 @@
-
-
 program{
-    int a;
     int b;
-    b = 10;
-    a = 60;
-    if(a <> 60) then{
-        int b;
-        b = 5;
-        put(a+b);
-    }else{
-        int b;
-        b = 20;
-        put(a+b);   // Print P
+    b = 1;
+    for(int b = 65; b <= 67; b = b +1){
+        put(b);
     };
-
-    if(a >= 60) then{
-        int b;
-        b = 5;
-        put(a+b);   // Print A
-    }else{
-        int b;
-        b = 20;
-        put(a+b);
-    };
-    put(a+b);   // Print F
+    put(32); put(32); put(32);
+    put(b+64);  // Testing scopes
 };
