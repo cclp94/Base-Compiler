@@ -75,6 +75,5 @@ program {
     var3[0][0] = aInstance.member2;
     // variable that is out of scope (undefined)
     var6 = var1;
-    // TODO Duplicated variable name in scope
     int var5;
  };

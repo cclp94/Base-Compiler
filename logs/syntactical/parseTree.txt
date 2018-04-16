@@ -4,14 +4,16 @@ prog: ProgNode
 		attributeDecl: ClassAttributeNode
 			'[int:int]': TypeNode
 			'[id:a]': IdNode
+			arrayDimenssions: ArrayDimenssionNode
+				'[intNum:100]': IntegerNode
 	classDecl: ClassDeclNode
 		'[id:B]': IdNode
 		attributeDecl: ClassAttributeNode
-			'[int:int]': TypeNode
-			'[id:b]': IdNode
-		attributeDecl: ClassAttributeNode
 			'[id:A]': TypeNode
-			'[id:aAttr]': IdNode
+			'[id:aInst]': IdNode
+			arrayDimenssions: ArrayDimenssionNode
+				'[intNum:2]': IntegerNode
+				'[intNum:3]': IntegerNode
 	'[program:program]': ProgramNode
 		funcBody: FuncBodyNode
 			varDecl: VariableDeclNode
@@ -21,14 +23,74 @@ prog: ProgNode
 				var: VariableNode
 					'[id:bInst]': IdNode
 					dataMember: DataMemberNode
-						'[id:aAttr]': IdNode
+						'[id:aInst]': IdNode
+						indices: IndicesNode
+							'[intNum:0]': IntegerNode
+							'[intNum:2]': IntegerNode
 						dataMember: DataMemberNode
 							'[id:a]': IdNode
-				'[intNum:65]': IntegerNode
+							indices: IndicesNode
+								'[intNum:1]': IntegerNode
+				'[intNum:4]': IntegerNode
+			assign: AssignNode
+				var: VariableNode
+					'[id:bInst]': IdNode
+					dataMember: DataMemberNode
+						'[id:aInst]': IdNode
+						indices: IndicesNode
+							'[intNum:1]': IntegerNode
+							'[intNum:2]': IntegerNode
+						dataMember: DataMemberNode
+							'[id:a]': IdNode
+							indices: IndicesNode
+								'[intNum:95]': IntegerNode
+				'[intNum:5]': IntegerNode
+			assign: AssignNode
+				var: VariableNode
+					'[id:bInst]': IdNode
+					dataMember: DataMemberNode
+						'[id:aInst]': IdNode
+						indices: IndicesNode
+							'[intNum:0]': IntegerNode
+							'[intNum:0]': IntegerNode
+						dataMember: DataMemberNode
+							'[id:a]': IdNode
+							indices: IndicesNode
+								'[intNum:51]': IntegerNode
+				'[intNum:1222]': IntegerNode
 			put: PutNode
 				variable: VariableNode
 					'[id:bInst]': IdNode
 					dataMember: DataMemberNode
-						'[id:aAttr]': IdNode
+						'[id:aInst]': IdNode
+						indices: IndicesNode
+							'[intNum:0]': IntegerNode
+							'[intNum:2]': IntegerNode
 						dataMember: DataMemberNode
 							'[id:a]': IdNode
+							indices: IndicesNode
+								'[intNum:1]': IntegerNode
+			put: PutNode
+				variable: VariableNode
+					'[id:bInst]': IdNode
+					dataMember: DataMemberNode
+						'[id:aInst]': IdNode
+						indices: IndicesNode
+							'[intNum:1]': IntegerNode
+							'[intNum:2]': IntegerNode
+						dataMember: DataMemberNode
+							'[id:a]': IdNode
+							indices: IndicesNode
+								'[intNum:95]': IntegerNode
+			put: PutNode
+				variable: VariableNode
+					'[id:bInst]': IdNode
+					dataMember: DataMemberNode
+						'[id:aInst]': IdNode
+						indices: IndicesNode
+							'[intNum:0]': IntegerNode
+							'[intNum:0]': IntegerNode
+						dataMember: DataMemberNode
+							'[id:a]': IdNode
+							indices: IndicesNode
+								'[intNum:51]': IntegerNode

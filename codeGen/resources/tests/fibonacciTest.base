@@ -11,5 +11,5 @@ int fib(int num){
 };
 
 program{
-    put(fib(10)+10); // Output 55 + 10 = 65(A)
+    put(fib(30)); // Output 55 + 10 = 65(A)
 };

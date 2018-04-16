@@ -93,20 +93,22 @@ class CodeGenVisitor(Visitor):
     def _(self, node):
         registerToDeallocate =[]
         self.acceptChildren(node)
-        funcScope = node.findScope(node.leftMostChild.value.value)
+        funcScope = node.getGlobalScope().search(node.leftMostChild.value.value)
         funcOffset = -funcScope.size
-        paramIndex = 1
-        for param in node.getChildrenList()[1].getChildrenList():
-            paramOffset = abs(-funcScope.link.entries[paramIndex].offset + node.findScope(node.leftMostChild.value.value).link.offset +4)
-            paramRegister = self.registerPool.pop()
-            if not type(param) is IntegerNode:
-                paramRegister = self.loadValFromNodeOffset(param.moonStackOffset, paramRegister)
-            else:
-                self.moonLine(None, "addi "+paramRegister+", R0, " + str(param.moonStackOffset))
-            self.moonLine(None, "sw "+str(-paramOffset)+"("+self.stackRegister+"), "+ paramRegister, "Copy parameter")
-            registerToDeallocate.append(paramRegister)
-            param.setMoonRegister(None)
-            paramIndex += 1
+        fparams = node.getChildrenList()
+        if len(fparams) > 1:
+            paramIndex = 1
+            for param in node.getChildrenList()[1].getChildrenList():
+                paramOffset = abs(-funcScope.link.entries[paramIndex].offset + node.getGlobalScope().search(node.leftMostChild.value.value).link.offset +4)
+                paramRegister = self.registerPool.pop()
+                if not type(param) is IntegerNode:
+                    paramRegister = self.loadValFromNodeOffset(param.moonStackOffset, paramRegister)
+                else:
+                    self.moonLine(None, "addi "+paramRegister+", R0, " + str(param.moonStackOffset))
+                self.moonLine(None, "sw "+str(-paramOffset)+"("+self.stackRegister+"), "+ paramRegister, "Copy parameter")
+                registerToDeallocate.append(paramRegister)
+                param.setMoonRegister(None)
+                paramIndex += 1
         self.moonLine(None, "addi "+self.stackRegister+", "+self.stackRegister+", "+ str(funcOffset-4))
         #jump to function
         self.moonLine(None, "jl "+self.frameRegister+", "+funcScope.link.tag)
@@ -131,7 +133,7 @@ class CodeGenVisitor(Visitor):
         self.acceptChildren(node)
         self.moonLine(None, "hlt", "program exit")
         self.moonLine(None, None, "END OF PROGRAM")
-        #self.moonLine("buf", "res 20", "mem for moon lib subroutines")
+        self.moonLine("buf", "res 20", "mem for moon lib subroutines")
         print(self.moonCode)
         if len(self.registerPool) < 12:
             print("Register not deallocated", self.registerPool)
@@ -187,7 +189,42 @@ class CodeGenVisitor(Visitor):
         children = node.getChildrenList()
         if len(children) > 1:
             self.acceptChildren(node)
-            node.setMoonStackOffset(children[1].moonStackOffset)
+            if type(children[1]) is IndicesNode:
+                varNode = node.parent
+                varEntry = node.findScope(varNode.leftMostChild.value.value)
+                dataEntry = varEntry.link.search(node.leftMostChild.value.value)
+                tmpReg = self.registerPool.pop()
+                #self.acceptChildren(children[1])
+                indicesChildren = children[1].getChildrenList()
+                indices = list(map(lambda x: re.sub('\]', '', x), dataEntry.entryType.split('[')))
+                self.moonLine(None, "addi " + tmpReg + ", R0, 0")
+                for i in range(len(indicesChildren)):
+                    counter = 1
+                    for index in indices[2 + i:]:
+                        counter *= int(index)
+                    # Load index
+                    indexReg = self.registerPool.pop()
+                    if type(indicesChildren[i]) is IntegerNode:
+                        self.moonLine(None, "addi "+indexReg+", R0, "+str(indicesChildren[i].moonStackOffset))
+                    else:
+                        self.moonLine(None, "lw "+indexReg+", "+str(indicesChildren[i].moonStackOffset)+"("+self.stackRegister+")")
+                    self.moonLine(None, "muli " + indexReg + ", " + indexReg + ", " + str(counter))
+                    self.moonLine(None, "add " + tmpReg + ", " + tmpReg + ", " + indexReg)
+                    # return index register
+                    self.registerPool.append(indexReg)
+                self.moonLine(None, "addi " + tmpReg + ", " + tmpReg + ", 1")
+                self.moonLine(None,"muli " + tmpReg + ", " + tmpReg + ", " + str(int(self.typeSizeOf(node, indices[0])/2)))
+                self.moonLine(None, "addi " + tmpReg + ", " + tmpReg + ", " + str(dataEntry.offset+self.globalOffset))
+                if len(children) == 3:
+                    childOffset = children[2].moonStackOffset
+                    if type(childOffset) is int:
+                        self.moonLine(None, "addi "+tmpReg+", "+tmpReg+", "+childOffset)
+                    else:
+                        self.moonLine(None, "add " + tmpReg + ", " + tmpReg + ", " + childOffset)
+                        self.registerPool.append(childOffset)
+                node.setMoonStackOffset(tmpReg)
+            else:
+                node.setMoonStackOffset(children[1].moonStackOffset)
         else:
             attName = children[0].value.value
             varNode = node.parent
@@ -396,6 +433,22 @@ class CodeGenVisitor(Visitor):
         self.registerPool.append(tmpReg)
         self.registerPool.append(tmpReg2)
 
+    @visit.register(NotNode)
+    def _(self, node):
+        self.acceptChildren(node)
+        child = node.leftMostChild
+        entry = node.symbolTableEntry
+        tmpReg = self.registerPool.pop()
+        if not type(child) is IntegerNode:
+            tmpReg = self.loadValFromNodeOffset(child.moonStackOffset, tmpReg)
+        else:
+            self.moonLine(None, "addi "+tmpReg+", R0, "+str(child.moonStackOffset))
+        self.moonLine(None, "not "+tmpReg+", "+tmpReg)
+        node.setMoonStackOffset(entry.offset+self.globalOffset)
+        self.moonLine(None, "sw "+str(node.moonStackOffset)+"("+self.stackRegister+"), "+tmpReg)
+
+        self.registerPool.append(tmpReg)
+
     @visit.register(RelOpNode)
     def _(self, node):
         self.acceptChildren(node)
@@ -443,13 +496,34 @@ class CodeGenVisitor(Visitor):
     def _(self, node):
         self.acceptChildren(node)
         child = node.leftMostChild
-        #load
-        tmpReg = self.registerPool.pop()
+        #load R1
+        tmpReg = self.registerPool.pop(0)
         if not type(child) is IntegerNode:
             tmpReg = self.loadValFromNodeOffset(child.moonStackOffset, tmpReg)
         else:
             self.moonLine(None, "addi " + tmpReg + ", R0, " + str(child.moonStackOffset))
-        self.moonLine(None, "putc "+tmpReg)
+        self.moonLine(None, "jl "+self.frameRegister+", putint")
+        self.moonLine(None, "addi "+tmpReg+", R0, 10")
+        self.moonLine(None, "putc "+tmpReg, "Jump Line")
         child.setMoonRegister(None)
-        self.registerPool.append(tmpReg)
+        self.registerPool.insert(0, tmpReg)
+
+    @visit.register(GetNode)
+    def _(self, node):
+        self.acceptChildren(node)
+        child = node.leftMostChild
+        # load R1
+        tmpReg = self.registerPool.pop(0)
+        self.moonLine(None, "jl "+self.frameRegister+", getint")
+        #save value
+        if type(child.moonStackOffset) is int:
+            self.moonLine(None, "sw "+str(child.moonStackOffset)+"("+self.stackRegister+"), "+tmpReg)
+        else:
+            self.moonLine(None, "add " + child.moonStackOffset + ", " + self.stackRegister + ", " + child.moonStackOffset)
+            self.moonLine(None, "sw 0("+child.moonStackOffset+"), "+tmpReg)
+            self.registerPool.append(child.moonStackOffset)
+        # flush enter key
+        self.moonLine(None, "getc " + tmpReg)
+        child.setMoonRegister(None)
+        self.registerPool.insert(0, tmpReg)
 

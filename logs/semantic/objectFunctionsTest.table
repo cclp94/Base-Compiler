@@ -1,0 +1,110 @@
+-------------------------------------------------------------------------------------
+global @ 0x529dd90	Scope offset: 0
+| '[id:Math]' | class | None | 0 | None | 0x529de70 |
+| '[id:sum]' | classMemberFunction:Math | int:int,int, | 16 | None | 0x529df30 |
+| '[id:sub]' | classMemberFunction:Math | int:int,int, | 16 | None | 0x529df90 |
+| '[id:mul]' | classMemberFunction:Math | int:int,int, | 16 | None | 0x52a3150 |
+| '[id:div]' | classMemberFunction:Math | int:int,int, | 16 | None | 0x52a3170 |
+| '[id:factorial]' | classMemberFunction:Math | int:int, | 8 | None | 0x52a31f0 |
+| '[id:normalFun]' | function | int:int,int, | 16 | None | 0x52a3310 |
+| program | mainFunction | None | 40 | None | 0x529dfd0 |
+-------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------
+'[id:Math]' @ 0x529de70	Scope offset: 0
+| '[id:sum]' | function | int:int,int, | 0 | 0 | 0x1df37e50 |
+| '[id:sub]' | function | int:int,int, | 0 | 0 | 0x1df37e50 |
+| '[id:mul]' | function | int:int,int, | 0 | 0 | 0x1df37e50 |
+| '[id:div]' | function | int:int,int, | 0 | 0 | 0x1df37e50 |
+| '[id:factorial]' | function | int:int, | 0 | 0 | 0x1df37e50 |
+-------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------
+sum @ 0x529df30	Scope offset: 16
+| returnType | returnType | int | 4 | 4 | 0x1df37e50 |
+| '[id:a]' | parameter | int | 4 | 8 | 0x1df37e50 |
+| '[id:b]' | parameter | int | 4 | 12 | 0x1df37e50 |
+| tmpVar1 | tempVar | int | 4 | 16 | 0x1df37e50 |
+-------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------
+sub @ 0x529df90	Scope offset: 16
+| returnType | returnType | int | 4 | 4 | 0x1df37e50 |
+| '[id:a]' | parameter | int | 4 | 8 | 0x1df37e50 |
+| '[id:b]' | parameter | int | 4 | 12 | 0x1df37e50 |
+| tmpVar2 | tempVar | int | 4 | 16 | 0x1df37e50 |
+-------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------
+mul @ 0x52a3150	Scope offset: 16
+| returnType | returnType | int | 4 | 4 | 0x1df37e50 |
+| '[id:a]' | parameter | int | 4 | 8 | 0x1df37e50 |
+| '[id:b]' | parameter | int | 4 | 12 | 0x1df37e50 |
+| tmpVar3 | tempVar | int | 4 | 16 | 0x1df37e50 |
+-------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------
+div @ 0x52a3170	Scope offset: 16
+| returnType | returnType | int | 4 | 4 | 0x1df37e50 |
+| '[id:a]' | parameter | int | 4 | 8 | 0x1df37e50 |
+| '[id:b]' | parameter | int | 4 | 12 | 0x1df37e50 |
+| tmpVar4 | tempVar | int | 4 | 16 | 0x1df37e50 |
+-------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------
+factorial @ 0x52a31f0	Scope offset: 8
+| returnType | returnType | int | 4 | 4 | 0x1df37e50 |
+| '[id:num]' | parameter | int | 4 | 8 | 0x1df37e50 |
+| ifStatement | ifStatement | None | 0 | 12 | 0x52a3230 |
+-------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------
+ifStatement @ 0x52a3230	Scope offset: 12
+| statBlockScope | statBlockScope | None | 0 | 0 | 0x52a3270 |
+| statBlockScope | statBlockScope | None | 12 | 0 | 0x52a32f0 |
+| tmpVar5 | tempVar | int | 4 | -8 | 0x1df37e50 |
+-------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------
+anonymous @ 0x52a3270	Scope offset: 0
+-------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------
+anonymous @ 0x52a32f0	Scope offset: 12
+| tmpVar6 | tempVar | int | 4 | -4 | 0x1df37e50 |
+| tmpVar7 | tempVar | int | 4 | -8 | 0x1df37e50 |
+| tmpVar8 | tempVar | int | 4 | -12 | 0x1df37e50 |
+-------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------
+normalFun @ 0x52a3310	Scope offset: 16
+| returnType | returnType | int | 4 | 4 | 0x1df37e50 |
+| '[id:a]' | parameter | int | 4 | 8 | 0x1df37e50 |
+| '[id:b]' | parameter | int | 4 | 12 | 0x1df37e50 |
+| tmpVar9 | tempVar | int | 4 | 16 | 0x1df37e50 |
+-------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------
+program @ 0x529dfd0	Scope offset: 40
+| '[id:c]' | variable | int | 4 | 0 | 0x1df37e50 |
+| '[id:d]' | variable | int | 4 | 4 | 0x1df37e50 |
+| '[id:mathUtil]' | variable | Math | 0 | 8 | 0x529de70 |
+| tmpVar10 | tempVar | int | 4 | 8 | 0x1df37e50 |
+| tmpVar11 | tempVar | int | 4 | 12 | 0x1df37e50 |
+| tmpVar12 | tempVar | int | 4 | 16 | 0x1df37e50 |
+| tmpVar13 | tempVar | int | 4 | 20 | 0x1df37e50 |
+| tmpVar14 | tempVar | int | 4 | 24 | 0x1df37e50 |
+| tmpVar15 | tempVar | int | 4 | 28 | 0x1df37e50 |
+| tmpVar16 | tempVar | int | 4 | 32 | 0x1df37e50 |
+| tmpVar17 | tempVar | int | 4 | 36 | 0x1df37e50 |
+-------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------
+'[id:Math]' @ 0x529de70	Scope offset: 0
+| '[id:sum]' | function | int:int,int, | 0 | 0 | 0x1df37e50 |
+| '[id:sub]' | function | int:int,int, | 0 | 0 | 0x1df37e50 |
+| '[id:mul]' | function | int:int,int, | 0 | 0 | 0x1df37e50 |
+| '[id:div]' | function | int:int,int, | 0 | 0 | 0x1df37e50 |
+| '[id:factorial]' | function | int:int, | 0 | 0 | 0x1df37e50 |
+-------------------------------------------------------------------------------------
+

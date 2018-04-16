@@ -1,4 +1,5 @@
 from semantic.visitors.Visitor import *
+from utils.ErrorLogger import ErrorLogger
 
 class SymbolTableCreatorVisitor(Visitor):
     varNameCounter = 0

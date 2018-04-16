@@ -1,4 +1,4 @@
-          %== CODE FOR: ./bin/test.m ==%
+          %== CODE FOR: ./bin/arrayInObjectArrayTest.m ==%
           entry  % program entry
           align
           addi R14, R0, topaddr  % init stack pointer register

@@ -3,17 +3,12 @@ program{
     b = 1;
     for(int b = 65; b < 91; b = b +1){
         put(b);
-        put(10);+
         for(int i = 0; i <= 23; i = i +1){
             put(97+i);
-            put(10);
             for(int j = 0; j <= 23; j = j +1){
-                put(65+j);put(32);
+                put(65+j);
             };
-            put(10);
         };
-        put(10);
     };
-    put(32); put(32); put(32);
     put(b+64);  // Testing scopes
 };

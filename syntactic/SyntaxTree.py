@@ -64,6 +64,12 @@ class AbstractSyntaxNode:
             parent = parent.parent
         return parent.symTable
 
+    def getGlobalScope(self):
+        parent = self.parent
+        while not type(parent) is ProgNode:
+            parent = parent.parent
+        return parent.symTable
+
     def setNodeType(self, nodeType):
         self.nodeType = nodeType
 

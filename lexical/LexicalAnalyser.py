@@ -3,6 +3,7 @@ import os
 import datetime
 from lexical.Token import Token 
 from lexical.LexicalTable import LexicalTable
+from utils.ErrorLogger import ErrorLogger
 
 class LexicalAnalyser:
     LOGS_DIR= 'lexical/logs/'
@@ -82,6 +83,7 @@ class LexicalAnalyser:
         return self.__table.isErrorState(state)
 
     def __fileError(self, errorMsg):
+        ErrorLogger(str(datetime.datetime.utcnow())+": "+ errorMsg+" in "+ self.filepath +"\n")
         if not os.path.exists(self.LOGS_DIR):
             os.makedirs(self.LOGS_DIR)
         f = open(self.LOGS_DIR+self.ERROR_FILE, 'a')

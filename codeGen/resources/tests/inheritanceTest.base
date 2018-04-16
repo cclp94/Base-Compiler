@@ -1,0 +1,21 @@
+class A{
+    int a;
+    int foo();
+};
+
+class B : A{
+    int b;
+};
+
+int foo(){
+    put(100);
+};
+
+program{
+    B bInst;
+    get(bInst.a);
+    get(bInst.b);
+    put(bInst.b);
+    put(bInst.a);
+    put(bInst.foo());
+};

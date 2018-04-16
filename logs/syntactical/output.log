@@ -7,140 +7,704 @@ class id { int
 type -> 'int'
 class id { int 
 class id { int id 
-classDeclEntityTail -> EPSILON
-class id { int id 
-class id { int id ; 
-classDeclEntity -> type 'id' classDeclEntityTail ';'
-class id { int id ; 
-classDeclEntities -> EPSILON
-class id { int id ; 
-classDeclEntities -> classDeclEntity classDeclEntities
-class id { int id ; 
-class id { int id ; } 
-class id { int id ; } ; 
-classDecl -> 'class' 'id' inheritance '{' classDeclEntities '}' ';'
-class id { int id ; } ; 
-class id { int id ; } ; class 
-class id { int id ; } ; class id 
-inheritance -> EPSILON
-class id { int id ; } ; class id 
-class id { int id ; } ; class id { 
-class id { int id ; } ; class id { int 
-type -> 'int'
-class id { int id ; } ; class id { int 
-class id { int id ; } ; class id { int id 
-classDeclEntityTail -> EPSILON
-class id { int id ; } ; class id { int id 
-class id { int id ; } ; class id { int id ; 
-classDeclEntity -> type 'id' classDeclEntityTail ';'
-class id { int id ; } ; class id { int id ; 
-class id { int id ; } ; class id { int id ; id 
-type -> 'id'
-class id { int id ; } ; class id { int id ; id 
-class id { int id ; } ; class id { int id ; id id 
-classDeclEntityTail -> EPSILON
-class id { int id ; } ; class id { int id ; id id 
-class id { int id ; } ; class id { int id ; id id ; 
-classDeclEntity -> type 'id' classDeclEntityTail ';'
-class id { int id ; } ; class id { int id ; id id ; 
-classDeclEntities -> EPSILON
-class id { int id ; } ; class id { int id ; id id ; 
-classDeclEntities -> classDeclEntity classDeclEntities
-class id { int id ; } ; class id { int id ; id id ; 
-classDeclEntities -> classDeclEntity classDeclEntities
-class id { int id ; } ; class id { int id ; id id ; 
-class id { int id ; } ; class id { int id ; id id ; } 
-class id { int id ; } ; class id { int id ; id id ; } ; 
-classDecl -> 'class' 'id' inheritance '{' classDeclEntities '}' ';'
-class id { int id ; } ; class id { int id ; id id ; } ; 
-classHeaders -> EPSILON
-class id { int id ; } ; class id { int id ; id id ; } ; 
-classHeaders -> classDecl classHeaders
-class id { int id ; } ; class id { int id ; id id ; } ; 
-classHeaders -> classDecl classHeaders
-class id { int id ; } ; class id { int id ; id id ; } ; 
-classSources -> EPSILON
-class id { int id ; } ; class id { int id ; id id ; } ; 
-class id { int id ; } ; class id { int id ; id id ; } ; program 
-class id { int id ; } ; class id { int id ; id id ; } ; program { 
-class id { int id ; } ; class id { int id ; id id ; } ; program { id 
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id 
+class id { int id [ 
+class id { int id [ intNum 
+class id { int id [ intNum ] 
+arraySize -> '[' 'intNum' ']'
+class id { int id [ intNum ] 
 arrayDimenssion -> EPSILON
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id 
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; 
+class id { int id [ intNum ] 
+arrayDimenssion -> arraySize arrayDimenssion
+class id { int id [ intNum ] 
+classDeclEntityTail -> arrayDimenssion
+class id { int id [ intNum ] 
+class id { int id [ intNum ] ; 
+classDeclEntity -> type 'id' classDeclEntityTail ';'
+class id { int id [ intNum ] ; 
+classDeclEntities -> EPSILON
+class id { int id [ intNum ] ; 
+classDeclEntities -> classDeclEntity classDeclEntities
+class id { int id [ intNum ] ; 
+class id { int id [ intNum ] ; } 
+class id { int id [ intNum ] ; } ; 
+classDecl -> 'class' 'id' inheritance '{' classDeclEntities '}' ';'
+class id { int id [ intNum ] ; } ; 
+class id { int id [ intNum ] ; } ; class 
+class id { int id [ intNum ] ; } ; class id 
+inheritance -> EPSILON
+class id { int id [ intNum ] ; } ; class id 
+class id { int id [ intNum ] ; } ; class id { 
+class id { int id [ intNum ] ; } ; class id { id 
+type -> 'id'
+class id { int id [ intNum ] ; } ; class id { id 
+class id { int id [ intNum ] ; } ; class id { id id 
+class id { int id [ intNum ] ; } ; class id { id id [ 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] 
+arraySize -> '[' 'intNum' ']'
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] 
+arraySize -> '[' 'intNum' ']'
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] 
+arrayDimenssion -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] 
+arrayDimenssion -> arraySize arrayDimenssion
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] 
+arrayDimenssion -> arraySize arrayDimenssion
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] 
+classDeclEntityTail -> arrayDimenssion
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; 
+classDeclEntity -> type 'id' classDeclEntityTail ';'
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; 
+classDeclEntities -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; 
+classDeclEntities -> classDeclEntity classDeclEntities
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; 
+classDecl -> 'class' 'id' inheritance '{' classDeclEntities '}' ';'
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; 
+classHeaders -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; 
+classHeaders -> classDecl classHeaders
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; 
+classHeaders -> classDecl classHeaders
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; 
+classSources -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id 
+arrayDimenssion -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; 
 varAssignOrDeclTail -> 'id' arrayDimenssion ';'
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; 
 varAssignOrDecl -> 'id' varAssignOrDeclTail
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; 
 statement -> varAssignOrDecl
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; 
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id 
 indices -> EPSILON
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id 
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . 
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id 
-idnestTail -> EPSILON
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id 
-idnest -> '.' 'id' idnestTail
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id 
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . 
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id 
-idnestTail -> EPSILON
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id 
-idnest -> '.' 'id' idnestTail
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id 
-idnests -> EPSILON
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id 
-idnests -> idnest idnests
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id 
-idnests -> idnest idnests
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id 
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = 
-assignOp -> '='
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = 
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum 
 factor -> intNum
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum 
 termTail -> EPSILON
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum 
 term -> factor termTail
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum 
 arithExprTail -> EPSILON
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum 
 arithExpr -> term relOp
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum 
-exprTail -> EPSILON
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum 
-expr -> arithExpr exprTail
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum 
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; 
-varAssignOrDeclTail -> indices idnests assignOp expr ';'
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; 
-varAssignOrDecl -> 'id' varAssignOrDeclTail
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; 
-statement -> varAssignOrDecl
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; 
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; put 
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; put ( 
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; put ( id 
-variableOrFuncCallTail -> EPSILON
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; put ( id 
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; put ( id . 
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; put ( id . id 
-idnestTail -> EPSILON
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; put ( id . id 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] 
+indice -> '[' arithExpr ']'
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum 
+factor -> intNum
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum 
+termTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum 
+term -> factor termTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum 
+arithExprTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum 
+arithExpr -> term relOp
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] 
+indice -> '[' arithExpr ']'
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] 
+indices -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] 
+indices -> indice indices
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] 
+indices -> indice indices
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] 
+idnestHeadTail -> indices
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] 
 idnest -> '.' 'id' idnestTail
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; put ( id . id 
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; put ( id . id . 
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; put ( id . id . id 
-idnestTail -> EPSILON
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; put ( id . id . id 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum 
+factor -> intNum
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum 
+termTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum 
+term -> factor termTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum 
+arithExprTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum 
+arithExpr -> term relOp
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] 
+indice -> '[' arithExpr ']'
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] 
+indices -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] 
+indices -> indice indices
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] 
+idnestHeadTail -> indices
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] 
 idnest -> '.' 'id' idnestTail
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; put ( id . id . id 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] 
 idnests -> EPSILON
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; put ( id . id . id 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] 
 idnests -> idnest idnests
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; put ( id . id . id 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] 
 idnests -> idnest idnests
-class id { int id ; } ; class id { int id ; id id ; } ; program { id id ; id . id . id = intNum ; put ( id . id . id 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = 
+assignOp -> '='
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum 
+factor -> intNum
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum 
+termTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum 
+term -> factor termTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum 
+arithExprTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum 
+arithExpr -> term relOp
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum 
+exprTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum 
+expr -> arithExpr exprTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; 
+varAssignOrDeclTail -> indices idnests assignOp expr ';'
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; 
+varAssignOrDecl -> 'id' varAssignOrDeclTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; 
+statement -> varAssignOrDecl
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id 
+indices -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum 
+factor -> intNum
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum 
+termTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum 
+term -> factor termTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum 
+arithExprTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum 
+arithExpr -> term relOp
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] 
+indice -> '[' arithExpr ']'
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum 
+factor -> intNum
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum 
+termTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum 
+term -> factor termTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum 
+arithExprTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum 
+arithExpr -> term relOp
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] 
+indice -> '[' arithExpr ']'
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] 
+indices -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] 
+indices -> indice indices
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] 
+indices -> indice indices
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] 
+idnestHeadTail -> indices
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] 
+idnest -> '.' 'id' idnestTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum 
+factor -> intNum
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum 
+termTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum 
+term -> factor termTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum 
+arithExprTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum 
+arithExpr -> term relOp
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] 
+indice -> '[' arithExpr ']'
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] 
+indices -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] 
+indices -> indice indices
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] 
+idnestHeadTail -> indices
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] 
+idnest -> '.' 'id' idnestTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] 
+idnests -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] 
+idnests -> idnest idnests
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] 
+idnests -> idnest idnests
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = 
+assignOp -> '='
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum 
+factor -> intNum
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum 
+termTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum 
+term -> factor termTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum 
+arithExprTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum 
+arithExpr -> term relOp
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum 
+exprTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum 
+expr -> arithExpr exprTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; 
+varAssignOrDeclTail -> indices idnests assignOp expr ';'
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; 
+varAssignOrDecl -> 'id' varAssignOrDeclTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; 
+statement -> varAssignOrDecl
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id 
+indices -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum 
+factor -> intNum
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum 
+termTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum 
+term -> factor termTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum 
+arithExprTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum 
+arithExpr -> term relOp
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] 
+indice -> '[' arithExpr ']'
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum 
+factor -> intNum
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum 
+termTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum 
+term -> factor termTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum 
+arithExprTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum 
+arithExpr -> term relOp
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] 
+indice -> '[' arithExpr ']'
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] 
+indices -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] 
+indices -> indice indices
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] 
+indices -> indice indices
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] 
+idnestHeadTail -> indices
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] 
+idnest -> '.' 'id' idnestTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum 
+factor -> intNum
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum 
+termTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum 
+term -> factor termTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum 
+arithExprTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum 
+arithExpr -> term relOp
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] 
+indice -> '[' arithExpr ']'
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] 
+indices -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] 
+indices -> indice indices
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] 
+idnestHeadTail -> indices
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] 
+idnest -> '.' 'id' idnestTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] 
+idnests -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] 
+idnests -> idnest idnests
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] 
+idnests -> idnest idnests
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = 
+assignOp -> '='
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum 
+factor -> intNum
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum 
+termTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum 
+term -> factor termTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum 
+arithExprTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum 
+arithExpr -> term relOp
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum 
+exprTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum 
+expr -> arithExpr exprTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; 
+varAssignOrDeclTail -> indices idnests assignOp expr ';'
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; 
+varAssignOrDecl -> 'id' varAssignOrDeclTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; 
+statement -> varAssignOrDecl
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id 
+variableOrFuncCallTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum 
+factor -> intNum
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum 
+termTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum 
+term -> factor termTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum 
+arithExprTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum 
+arithExpr -> term relOp
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] 
+indice -> '[' arithExpr ']'
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum 
+factor -> intNum
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum 
+termTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum 
+term -> factor termTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum 
+arithExprTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum 
+arithExpr -> term relOp
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] 
+indice -> '[' arithExpr ']'
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] 
+indices -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] 
+indices -> indice indices
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] 
+indices -> indice indices
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] 
+idnestHeadTail -> indices
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] 
+idnest -> '.' 'id' idnestTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum 
+factor -> intNum
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum 
+termTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum 
+term -> factor termTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum 
+arithExprTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum 
+arithExpr -> term relOp
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+indice -> '[' arithExpr ']'
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+indices -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+indices -> indice indices
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+idnestHeadTail -> indices
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+idnest -> '.' 'id' idnestTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+idnests -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+idnests -> idnest idnests
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+idnests -> idnest idnests
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
 variableOrFuncCall -> 'id' variableOrFuncCallTail idnests
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+factor -> variableOrFuncCall
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+termTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+term -> factor termTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+arithExprTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+arithExpr -> term relOp
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+exprTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+expr -> arithExpr exprTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; 
+statement -> 'put' '(' expr ')' ';'
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id 
+variableOrFuncCallTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum 
+factor -> intNum
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum 
+termTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum 
+term -> factor termTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum 
+arithExprTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum 
+arithExpr -> term relOp
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] 
+indice -> '[' arithExpr ']'
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum 
+factor -> intNum
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum 
+termTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum 
+term -> factor termTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum 
+arithExprTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum 
+arithExpr -> term relOp
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] 
+indice -> '[' arithExpr ']'
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] 
+indices -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] 
+indices -> indice indices
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] 
+indices -> indice indices
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] 
+idnestHeadTail -> indices
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] 
+idnest -> '.' 'id' idnestTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum 
+factor -> intNum
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum 
+termTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum 
+term -> factor termTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum 
+arithExprTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum 
+arithExpr -> term relOp
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+indice -> '[' arithExpr ']'
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+indices -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+indices -> indice indices
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+idnestHeadTail -> indices
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+idnest -> '.' 'id' idnestTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+idnests -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+idnests -> idnest idnests
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+idnests -> idnest idnests
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+variableOrFuncCall -> 'id' variableOrFuncCallTail idnests
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+factor -> variableOrFuncCall
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+termTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+term -> factor termTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+arithExprTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+arithExpr -> term relOp
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+exprTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+expr -> arithExpr exprTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; 
+statement -> 'put' '(' expr ')' ';'
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id 
+variableOrFuncCallTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum 
+factor -> intNum
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum 
+termTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum 
+term -> factor termTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum 
+arithExprTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum 
+arithExpr -> term relOp
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] 
+indice -> '[' arithExpr ']'
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum 
+factor -> intNum
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum 
+termTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum 
+term -> factor termTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum 
+arithExprTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum 
+arithExpr -> term relOp
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] 
+indice -> '[' arithExpr ']'
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] 
+indices -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] 
+indices -> indice indices
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] 
+indices -> indice indices
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] 
+idnestHeadTail -> indices
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] 
+idnest -> '.' 'id' idnestTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum 
+factor -> intNum
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum 
+termTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum 
+term -> factor termTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum 
+arithExprTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum 
+arithExpr -> term relOp
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+indice -> '[' arithExpr ']'
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+indices -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+indices -> indice indices
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+idnestHeadTail -> indices
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+idnest -> '.' 'id' idnestTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+idnests -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+idnests -> idnest idnests
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+idnests -> idnest idnests
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+variableOrFuncCall -> 'id' variableOrFuncCallTail idnests
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+factor -> variableOrFuncCall
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+termTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+term -> factor termTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+arithExprTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+arithExpr -> term relOp
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+exprTail -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+expr -> arithExpr exprTail
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; 
+statement -> 'put' '(' expr ')' ';'
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; 
+statements -> EPSILON
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; 
+statements -> statement statements
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; 
+statements -> statement statements
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; 
+statements -> statement statements
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; 
+statements -> statement statements
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; 
+statements -> statement statements
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; 
+statements -> statement statements
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; 
+statements -> statement statements
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; } 
+funcBody -> '{' statements '}'
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; } 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; } ; 
+prog -> classHeaders classSources 'program' funcBody ';'
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; } ; 
+class id { int id [ intNum ] ; } ; class id { id id [ intNum ] [ intNum ] ; } ; program { id id ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; id . id [ intNum ] [ intNum ] . id [ intNum ] = intNum ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; put ( id . id [ intNum ] [ intNum ] . id [ intNum ] ) ; } ; 

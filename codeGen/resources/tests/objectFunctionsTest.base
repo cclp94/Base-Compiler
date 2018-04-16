@@ -45,5 +45,5 @@ program{
     put(c);
     d = 5 + mathUtil.div(120,2);
     put(d);
-    put(mathUtil.factorial(4));
+    put(mathUtil.factorial(4)+41);
 };

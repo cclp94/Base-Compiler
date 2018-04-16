@@ -1,4 +1,4 @@
-from syntactic.SyntaxTree import ConcreteSyntaxNode
+from utils.ErrorLogger import ErrorLogger
 from syntactic.SyntaxTree import *
 
 lexicalStream = None
@@ -44,6 +44,7 @@ def parse(l, outputFileStream, errorFileStream):
         return ast
 
 def logError(msg):
+    ErrorLogger(msg)
     errorFile.write(msg+'\n')
     print(msg)
 
@@ -51,8 +52,11 @@ def logDerivationRule(line):
     outFile.write(line+'\n')
 
 def skipErrors(firstList, followList, token=''):
-    global  lookahead
-    if lookahead.tokenType in firstList or ('EPSILON' in firstList and lookahead.tokenType in followList):
+    global lookahead
+    if not lookahead:
+        logError("Unexpected end of file, expected "+token)
+        return False
+    if lookahead and lookahead.tokenType in firstList or ('EPSILON' in firstList and lookahead.tokenType in followList):
         return True
     else:
         error = "Invalid syntax at token: >>'"+str(lookahead.value)+"'<< at index "+str(lookahead.index)
@@ -69,7 +73,7 @@ def skipErrors(firstList, followList, token=''):
 
 def match(currentNodeLevel, token, astNode = None):
     global  lookahead
-    if  lookahead.tokenType == token:
+    if  lookahead and lookahead.tokenType == token:
         if astNode:
             astNode[0].setValue(lookahead)
         newTreeNode(currentNodeLevel, token, True)
@@ -78,7 +82,7 @@ def match(currentNodeLevel, token, astNode = None):
         return True
     else:
         skipErrors(first[currentNodeLevel.value], follow[currentNodeLevel.value]+[token], token)
-        if token == lookahead.tokenType:
+        if lookahead and token == lookahead.tokenType:
             return match(currentNodeLevel, token, astNode)
         return False
 
