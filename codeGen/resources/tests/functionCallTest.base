@@ -8,7 +8,7 @@ program{
     int c;
     a = 60;
     b = 5;
-    c = sum(a+b, b);
-    put(sum(c+b, b));   // print P
+    c = sum(a, b);
+    put(sum(c, b));   // print F
     put(c); // Should printA(65)
 };

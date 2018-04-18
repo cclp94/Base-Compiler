@@ -1,0 +1,11 @@
+int sum(int a, int b){
+    return(a+b);
+};
+
+program {
+    int num;
+    int num2;
+    get(num);
+    get(num2);
+    put(num+num2);
+};

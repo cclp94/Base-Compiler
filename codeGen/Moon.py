@@ -10,5 +10,5 @@ class Moon:
         self.__exec__(src)
 
     def  __exec__(self, src):
-        subprocess.call([self.MOON_PATH, src, '+t'])
+        subprocess.call([self.MOON_PATH,'+p', src, '+p', 'moon/newlib.m', '-t'])
 

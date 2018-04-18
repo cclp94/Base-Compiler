@@ -38,6 +38,10 @@ class AbstractSyntaxNode:
 
         self.nodeType = None
         self.moonRegister = None
+        self.moonStackOffset = None
+
+    def setMoonStackOffset(self, offset):
+        self.moonStackOffset = offset
 
     def setMoonRegister(self, rg):
         self.moonRegister = rg
@@ -57,6 +61,12 @@ class AbstractSyntaxNode:
     def getScope(self):
         parent = self.parent
         while not parent.symTable:
+            parent = parent.parent
+        return parent.symTable
+
+    def getGlobalScope(self):
+        parent = self.parent
+        while not type(parent) is ProgNode:
             parent = parent.parent
         return parent.symTable
 

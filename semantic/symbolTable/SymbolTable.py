@@ -1,11 +1,17 @@
 from lexical.Token import Token
-
+from utils.SymTableLogger import SymTableLogger
 class SymbolTable:
     def __init__(self, name):
         self.name = name
         self.tag = None
         self.entries = []
         self.offset = 0
+
+    def outputTable(self):
+        SymTableLogger(str(self))
+        for entry in self.entries:
+            if entry.link:
+                entry.link.outputTable()
 
     def setTag(self, tag):
         self.tag = tag
@@ -17,12 +23,19 @@ class SymbolTable:
         self.offset = offset
 
     def search(self, identifier):
+        # search local table
         for entry in self.entries:
             if type(entry.name) is Token:
                 if entry.name.value == identifier:
                     return entry
             elif entry.name == identifier:
                 return entry
+        # if not found search inner objects
+        for entry in self.entries:
+            if entry.link:
+                result = entry.link.search(identifier)
+                if result:
+                    return result
 
     def searchKind(self, entryKind):
         entries = []
@@ -30,6 +43,17 @@ class SymbolTable:
             if entry.kind == entryKind:
                 entries.append(entry)
         return entries
+
+    def getTotalEntryOffset(self, name, offset):
+        total = None
+        for entry in self.entries:
+            if (type(entry.name) is Token and entry.name.value == name) or entry.name == name:
+                return offset + entry.offset
+            if entry.link:
+                total = entry.link.getTotalEntryOffset(name, offset + entry.offset)
+                if total:
+                    break;
+        return total
 
     def __str__(self):
         string = '-------------------------------------------------------------------------------------\n' + str(self.name) + ' @ ' + hex(id(self)) +'\tScope offset: '+str(self.offset)+'\n'

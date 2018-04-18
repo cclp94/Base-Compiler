@@ -1,0 +1,20 @@
+-------------------------------------------------------------------------------------
+global @ 0x5738a30	Scope offset: 0
+| program | mainFunction | None | 296 | None | 0x5738ef0 |
+-------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------
+program @ 0x5738ef0	Scope offset: 296
+| '[id:aux]' | variable | int | 4 | 0 | 0x1d6c7e50 |
+| '[id:array]' | variable | int[2] | 8 | 4 | 0x1d6c7e50 |
+| '[id:a]' | variable | int[3][4][5] | 240 | 12 | 0x1d6c7e50 |
+| '[id:b]' | variable | int[2][2] | 16 | 252 | 0x1d6c7e50 |
+| tmpVar1 | tempVar | int | 4 | 268 | 0x1d6c7e50 |
+| tmpVar2 | tempVar | int | 4 | 272 | 0x1d6c7e50 |
+| tmpVar3 | tempVar | int | 4 | 276 | 0x1d6c7e50 |
+| tmpVar4 | tempVar | int | 4 | 280 | 0x1d6c7e50 |
+| tmpVar5 | tempVar | int | 4 | 284 | 0x1d6c7e50 |
+| tmpVar6 | tempVar | int | 4 | 288 | 0x1d6c7e50 |
+| tmpVar7 | tempVar | int | 4 | 292 | 0x1d6c7e50 |
+-------------------------------------------------------------------------------------
+

@@ -1,0 +1,15 @@
+int fib(int num){
+    if(num <= 2) then{
+        return(1);
+    }else{
+        if(num == 3) then{
+            return(2);
+        } else{
+            return(fib(num-1)+fib(num-2));
+        };
+    };
+};
+
+program{
+    put(fib(30)); // Output 55 + 10 = 65(A)
+};

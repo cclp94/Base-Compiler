@@ -1,0 +1,49 @@
+class Math{
+    int sum(int a, int b);
+    int sub(int a, int b);
+    int mul(int a, int b);
+    int div(int a, int b);
+    int factorial(int num);
+};
+
+int Math::sum(int a, int b){
+    return(a+b);
+};
+
+int Math::sub(int a, int b){
+    return(a-b);
+};
+
+int Math::mul(int a, int b){
+    return(a*b);
+};
+
+int Math::div(int a, int b){
+    return(a/b);
+};
+
+int Math::factorial(int num){
+    if(num <= 1) then
+        return(1);
+    else{
+        return(num * factorial(num-1));
+    };
+};
+
+int normalFun(int a, int b){
+    return(a+b);
+};
+
+program{
+    int c;
+    int d;
+    Math mathUtil;
+    put(normalFun(60,5));
+    put(mathUtil.sum(60,5));
+    put(mathUtil.sub(70,5));
+    c = mathUtil.mul(35,2);
+    put(c);
+    d = 5 + mathUtil.div(120,2);
+    put(d);
+    put(mathUtil.factorial(4)+41);
+};

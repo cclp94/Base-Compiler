@@ -54,14 +54,22 @@ if(arg_count > 1):
             typeCheckingVisitor = TypeCheckingVisitor()
             memAllocationVisitor = MemAllocationVisitor()
             codeGenVisitor = CodeGenVisitor('./bin/'+filepath.split('/')[-1].split('.')[0]+".m")
+            print('=====================TABLE CREATION================')
             ast.accept(tableCreationVisitor)
+            print('=====================TYPE CHECKING================')
             ast.accept(typeCheckingVisitor)
-            print('=====================MEMORY================')
-            ast.accept(memAllocationVisitor)
-            print('=====================CODE GEN================')
-            ast.accept(codeGenVisitor, True)
-            codeGenVisitor.output()
-            moon = Moon(codeGenVisitor.outputLocation)
+            try:
+                print('=====================MEMORY================')
+                ast.accept(memAllocationVisitor)
+                print('=====================CODE GEN================')
+                ast.accept(codeGenVisitor, True)
+                codeGenVisitor.output()
+                moon = Moon(codeGenVisitor.outputLocation)
+            except Exception:
+                print("Compilation Errors. Check logs and fix them to run the program.")
+                ErrorLogger.dump("error.log", True)
+            ast.symTable.outputTable()
+            SymTableLogger.dump('./logs/semantic/'+filepath.split('/')[-1].split('.')[0]+".table", False)
         if lexOut:
             lexOut.close()
         if synOut:

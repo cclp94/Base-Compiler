@@ -1,0 +1,14 @@
+class A{
+    int a;
+};
+
+class B{
+    int b;
+    A aAttr;
+};
+
+program{
+    B bInst;
+    bInst.aAttr.a = 65;
+    put(bInst.aAttr.a);
+};

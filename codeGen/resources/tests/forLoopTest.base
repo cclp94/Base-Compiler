@@ -1,0 +1,14 @@
+program{
+    int b;
+    b = 1;
+    for(int b = 65; b < 91; b = b +1){
+        put(b);
+        for(int i = 0; i <= 23; i = i +1){
+            put(97+i);
+            for(int j = 0; j <= 23; j = j +1){
+                put(65+j);
+            };
+        };
+    };
+    put(b+64);  // Testing scopes
+};
